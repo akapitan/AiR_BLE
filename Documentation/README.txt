@@ -1,1 +1,2 @@
-This is a directory containing all materials related to documentation. 
+This is a directory containing all materials related to documentation.  
+
