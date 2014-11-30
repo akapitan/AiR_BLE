@@ -22,12 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity 
-            android:name=".PointStatus">
-        </activity>
-        <activity 
-            android:name=".DiscountList">
+
+        <activity android:name=".PointStatusActivity">
+
         </activity>
     </application>
 

@@ -122,8 +122,8 @@ containing a value of this type.
         public static final int discount_list=0x7f030001;
         public static final int fragment_main=0x7f030002;
         public static final int fragment_navigation_drawer=0x7f030003;
-        public static final int login=0x7f030004;
-        public static final int point_status=0x7f030005;
+        public static final int login_fragment =0x7f030004;
+        public static final int point_status_fragment =0x7f030005;
     }
     public static final class menu {
         public static final int global=0x7f070000;

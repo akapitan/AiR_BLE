@@ -20,7 +20,7 @@
     <string name="txtPointsLabel">points</string>
     <string name="txtFriendStatusLabel">Friend status: </string>
     <string name="txtFriendStatus">Premium Friend</string>
-    
+    <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
     
     
     
