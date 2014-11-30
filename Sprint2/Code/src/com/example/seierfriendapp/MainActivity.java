@@ -1,86 +1,53 @@
 package com.example.seierfriendapp;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.StrictMode;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import com.example.fragments.LoginFragment;
 
-import com.example.datalayer.*;
-import com.example.seierfriendapp.R.layout;
+public class MainActivity extends FragmentActivity{
 
+    Button btnSignIn;
+    Button btnRegister;
 
-public class MainActivity extends Activity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	Button btnSignIn;
-	Button btnRegister;
+        ActionBar bar = getActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#444444")));
+        bar.hide();
+        setContentView(R.layout.login_layout);
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		/*
-		 * JUST FOR TESTING PURPOSES, 
-		 * remove before deployment
-		 */
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
-		StrictMode.setThreadPolicy(policy);
-		/**/
-		ActionBar bar = getActionBar();
-		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#444444")));
-		bar.hide();
-		
-		setContentView(R.layout.login);
+        LoginFragment firstFragment = new LoginFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).commit();
 
-		btnSignIn = (Button) findViewById(R.id.btnSignIn);
-		btnSignIn.setOnClickListener(new OnClickListener() {
+        btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(getApplicationContext(),
-						PointStatus.class);
-				EditText username = (EditText)findViewById(R.id.editText1);
-				EditText password = (EditText)findViewById(R.id.editText2);
-				
-				String url = "http://sfapp.viktor-lazar.com/api/v1/auth/" + username.getText().toString()
-						+ "/"+password.getText().toString();
-				String result = HttpClientService.getResponseFromUrl(url);
-				
-				/*
-				 * For testing purposes only
-				 * 
-				 */
-				if(result != ""){
-					try {
-						JSONObject json = new JSONObject(result);
-						String b = "Welcome "+json.getJSONArray("user").getJSONObject(0).getString("name").toString()
-								+" "+json.getJSONArray("user").getJSONObject(0).getString("lastname").toString();
-						
-						Toast.makeText(getApplicationContext(), b, Toast.LENGTH_LONG).show();
-						startActivity(i);
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						Toast.makeText(getApplicationContext(), "Something went wrong :(", Toast.LENGTH_LONG).show();
-					}
-					
-				}
-				
-			}
-		});
+                Intent i = new Intent(getApplication(), PointStatusActivity.class);
+                startActivity(i);
+            }
+        });
 
-	}
-
+       btnRegister = (Button)findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+                String url = String.format(res.getString(R.string.uriRegister));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(i);
+            }
+        });
+    }
 }
