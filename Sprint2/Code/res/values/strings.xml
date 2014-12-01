@@ -21,7 +21,7 @@
     <string name="txtFriendStatusLabel">Friend status: </string>
     <string name="txtFriendStatus">Premium Friend</string>
     <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
-    
+    <string name="wsURI">"http://evodeployment.evolaris.net:9000/v1/status/"</string>
     
     
 </resources>
