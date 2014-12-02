@@ -22,6 +22,21 @@
     <string name="txtFriendStatus">Premium Friend</string>
     <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
     <string name="wsURI">"http://evodeployment.evolaris.net:9000/v1/status/"</string>
-    
-    
+
+    <string-array name="nav_drawer_items">
+        <item >User info</item>
+        <item >Point status</item>
+        <item >Vouchers</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_photos</item>
+        <item>@drawable/ic_pages</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
 </resources>

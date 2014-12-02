@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.seierfriendapp.R;
 
-public class PointStatusFragment extends Fragment {
+public class VoucherFragment extends Fragment {
 	
-	public PointStatusFragment(){}
+	public VoucherFragment(){}
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
-        View rootView = inflater.inflate(R.layout.fragment_point_status, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_voucher, container, false);
          
         return rootView;
     }
