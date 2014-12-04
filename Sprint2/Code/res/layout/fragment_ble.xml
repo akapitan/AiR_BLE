@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On"
+            android:id="@+id/btnBle1"
+            android:background="#e25a10"
+            android:textColor="#ffffff"
+            android:layout_marginTop="39dp"
+            android:layout_alignParentTop="true" android:layout_alignParentStart="true"/>
+    <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Scan"
+            android:id="@+id/btnBle2"
+            android:background="#e25a10"
+            android:textColor="#ffffff"
+            android:layout_toEndOf="@+id/btnBle1"
+            android:layout_marginLeft="29dp" android:layout_alignTop="@+id/btnBle1"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Off"
+            android:id="@+id/btnBle3"
+            android:background="#e25a10"
+            android:textColor="#ffffff"
+            android:layout_toEndOf="@+id/btnBle2"
+            android:layout_marginLeft="34dp" android:layout_alignTop="@+id/btnBle2"/>
+        <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/listView" android:layout_below="@+id/btnBle1" android:layout_alignParentStart="true"
+                android:layout_marginTop="103dp"/>
+</RelativeLayout>

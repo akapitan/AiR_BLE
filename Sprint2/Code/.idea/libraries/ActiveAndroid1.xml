@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ActiveAndroid1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../AiR_BLE_vlazar-kraj/Sprint2/Code/libs/ActiveAndroid.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
