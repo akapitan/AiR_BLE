@@ -18,6 +18,8 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -187,5 +189,19 @@ public class JsonParser {
               //  Toast.makeText(ctx, "Something went wrong :(", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    /**
+     * Convert date from string to Date by using a Calendar class.
+     */
+    public static Date ConvertToDate(String jsonDate) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, Integer.parseInt(jsonDate.substring(0, 4)));
+        cal.set(Calendar.MONTH, Integer.parseInt(jsonDate.substring(5, 7)) - 1);
+        cal.set(Calendar.DAY_OF_MONTH,
+                Integer.parseInt(jsonDate.substring(8, 10)));
+        Date date = cal.getTime();
+
+        return date;
     }
 }

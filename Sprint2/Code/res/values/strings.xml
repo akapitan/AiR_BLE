@@ -4,6 +4,7 @@
     <string name="title_section1">User info</string>
     <string name="title_section2">Points status</string>
     <string name="title_section3">Vouchers</string>
+    <string name="title_section4">BLE test</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -18,6 +19,7 @@
     <string name="txtPointsHeading">Seier Friends</string>
     <string name="txtCurrentPoints">10.250</string>
     <string name="txtPointsLabel">points</string>
+    <string name="txtFriendName">Marcus Bach</string>
     <string name="txtFriendStatusLabel">Friend status: </string>
     <string name="txtFriendStatus">Premium Friend</string>
     <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
@@ -27,6 +29,7 @@
         <item >User info</item>
         <item >Point status</item>
         <item >Vouchers</item>
+        <item >BLE test</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->

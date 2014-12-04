@@ -1,10 +1,17 @@
 package com.example.seierfriendapp;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -15,15 +22,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import com.example.core.BaseApplication;
 import com.example.datalayer.NavDrawerItem;
 import com.example.datalayer.NavDrawerListAdapter;
 import com.example.fragments.*;
+import com.example.services.BLEScan;
+import com.example.services.OuterDevicesScan;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements Observer {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
+
+	//FOR BLE TEST
+	public BluetoothAdapter BA;
+	private Set<BluetoothDevice> pairedDevices;
+	OuterDevicesScan devicesScan;
+	BLEScan bleScan;
+	BaseApplication baseApp;
+	/* delete testing*/
+	public Context currentContext;
+	ArrayList<String> listaUredjaja;
+	ArrayAdapter<String> listAdapter;
+	Bundle bundle;
+
 
 	// nav drawer title
 	private CharSequence mDrawerTitle;
@@ -59,11 +83,13 @@ public class MainActivity extends Activity {
 
 		// adding nav drawer items to array
 		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-		// Find People
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+		// Find People
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+		//BLE
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(2, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -102,6 +128,14 @@ public class MainActivity extends Activity {
 			// on first time display view for first nav item
 			displayView(0);
 		}
+
+
+		//IMPORTANT!!! -> register observer with observable
+		baseApp = (BaseApplication) getApplication();
+		baseApp.setCurrentContext(this);
+		baseApp.getObserver().addObserver(this); //////////////////////////////////
+
+		//baseApp = new BaseApplication();
 	}
 
 	/**
@@ -157,13 +191,16 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new UserInfoFragment();
+			fragment = new PointStatusFragment();
 			break;
 		case 1:
-			fragment = new PointStatusFragment();
+			fragment = new UserInfoFragment();
 			break;
 		case 2:
 			fragment = new VoucherFragment();
+			break;
+		case 3:
+			fragment = new BleFragment();
 			break;
 
 		default:
@@ -211,4 +248,24 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
+	/**
+	 * For BLE
+	 * @param observable
+	 * @param o
+	 */
+	@Override
+	public void update(Observable observable, Object o) {
+
+        /*MyActivity.this.runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(MyActivity.this, "MAC: ", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+		Log.d("THIS IS MAAAAAAAAAIIIIIIIIIINNNNNNNNNNs", "I am notified" );
+	}
+
+	public BaseApplication getBaseApp()
+	{
+		return this.baseApp;
+	}
 }

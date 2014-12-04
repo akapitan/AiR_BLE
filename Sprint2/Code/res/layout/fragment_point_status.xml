@@ -61,12 +61,25 @@
                     />
 
             <TextView
-                    android:id="@+id/txtFriendStatusLabel"
+                    android:id="@+id/txtFriendName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="300dp"
+                    android:text="@string/txtFriendName"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="30sp"
+                    android:textStyle="normal"
+                    />
+
+            <TextView
+                    android:id="@+id/txtFriendStatusLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="340dp"
                     android:text="@string/txtFriendStatusLabel"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="20sp"
@@ -78,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="330dp"
+                    android:layout_marginTop="360dp"
                     android:text="@string/txtFriendStatus"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="38sp"

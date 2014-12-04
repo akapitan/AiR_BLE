@@ -18,7 +18,8 @@
                         android:text="@string/btnForgotPassword"
                         android:textColor="#ffffff"  android:id="@+id/editText5"
                         android:layout_gravity="center_horizontal|bottom" android:layout_alignParentBottom="true"
-                        android:layout_alignStart="@+id/editText1" android:layout_marginBottom="85dp"/>
+                        android:layout_alignStart="@+id/editText1" android:layout_marginBottom="85dp"
+                        android:visibility="invisible"/>
 
 
                 <EditText
