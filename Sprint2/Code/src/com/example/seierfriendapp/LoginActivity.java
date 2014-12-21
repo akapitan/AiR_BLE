@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.activeandroid.ActiveAndroid;
 import com.example.core.DbDataSaver;
 import com.example.fragments.LoginFragment;
+import com.example.services.BLEScan;
 import com.example.services.DataCollectedListener;
 import com.example.services.JsonParser;
 import org.apache.http.NameValuePair;

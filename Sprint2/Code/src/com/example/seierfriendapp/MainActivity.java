@@ -31,7 +31,7 @@ import com.example.fragments.*;
 import com.example.services.BLEScan;
 import com.example.services.OuterDevicesScan;
 
-public class MainActivity extends Activity implements Observer {
+public class MainActivity extends Activity{
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -42,11 +42,11 @@ public class MainActivity extends Activity implements Observer {
 	OuterDevicesScan devicesScan;
 	BLEScan bleScan;
 	BaseApplication baseApp;
-	/* delete testing*/
+	/* delete testing
 	public Context currentContext;
 	ArrayList<String> listaUredjaja;
 	ArrayAdapter<String> listAdapter;
-	Bundle bundle;
+	Bundle bundle;*/
 
 
 	// nav drawer title
@@ -130,12 +130,9 @@ public class MainActivity extends Activity implements Observer {
 		}
 
 
-		//IMPORTANT!!! -> register observer with observable
+		//IMPORTANT!!! -> set current context
 		baseApp = (BaseApplication) getApplication();
 		baseApp.setCurrentContext(this);
-		baseApp.getObserver().addObserver(this); //////////////////////////////////
-
-		//baseApp = new BaseApplication();
 	}
 
 	/**
@@ -199,9 +196,6 @@ public class MainActivity extends Activity implements Observer {
 		case 2:
 			fragment = new VoucherFragment();
 			break;
-		case 3:
-			fragment = new BleFragment();
-			break;
 
 		default:
 			break;
@@ -248,24 +242,4 @@ public class MainActivity extends Activity implements Observer {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	/**
-	 * For BLE
-	 * @param observable
-	 * @param o
-	 */
-	@Override
-	public void update(Observable observable, Object o) {
-
-        /*MyActivity.this.runOnUiThread(new Runnable() {
-            public void run() {
-                Toast.makeText(MyActivity.this, "MAC: ", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-		Log.d("THIS IS MAAAAAAAAAIIIIIIIIIINNNNNNNNNNs", "I am notified" );
-	}
-
-	public BaseApplication getBaseApp()
-	{
-		return this.baseApp;
-	}
 }
