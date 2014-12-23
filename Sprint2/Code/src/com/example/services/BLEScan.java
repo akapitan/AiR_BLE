@@ -27,7 +27,6 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
     public BluetoothManager manager;
     private SparseArray<BluetoothDevice> mDevices;
     Handler mHandler;
-    protected Set<Observer> observers;
     Context applicationContext;
     //Mac Addresses to filter scanned devices
     private List<String> macAddreses;
@@ -60,16 +59,17 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
      * Method that initiates device scanning, and stops it after 2,5 seconds
      * HARDCODED TIME VALUE -> CHANGE LATER!!!.
      */
-    private void startScan(Context ctx){
+    private void startScan(Context ctx) {
         applicationContext = ctx;
-        manager=(BluetoothManager) ctx.getSystemService(ctx.BLUETOOTH_SERVICE);
-        mBluetoothAdapter=manager.getAdapter();
-        mDevices=new SparseArray<BluetoothDevice>();
-        mHandler=new Handler();
+        manager = (BluetoothManager) ctx.getSystemService(ctx.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = manager.getAdapter();
+        mDevices = new SparseArray<BluetoothDevice>();
+        mHandler = new Handler();
 
         mBluetoothAdapter.startLeScan(this);
-        mHandler.postDelayed(mStopRunnable,3000);
+        mHandler.postDelayed(mStopRunnable, 3000);
     }
+
 
     /**
      * Method which stops scanning if wasn't stopped by mHandler in startScan method.
@@ -89,17 +89,16 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                 mDevices.put(device.hashCode(),device);
                 //send broadcast
                 if( j >5) {
+                    j=0;
                     Intent broadcastIntent = new Intent();
                     //broadcastIntent.setAction("com.example.backgroundScaning.ScaningService.OUTER_DEVICE_SCANNED");
                     broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
                     applicationContext.sendBroadcast(broadcastIntent);
                 }
-
             }else{
                 Log.e("BLEScan","Device NOT MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
             }
         }
-
     }
 
     /**

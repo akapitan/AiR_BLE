@@ -1,6 +1,7 @@
 package com.example.core;
 
 import android.app.Application;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -11,7 +12,6 @@ import com.example.backroundScaning.ScaningService;
  */
 public class BaseApplication extends Application {
     private Context currentContext;
-    private ScaningService scaningService;
     private static BaseApplication instance;
 
     public BaseApplication(){
@@ -20,6 +20,8 @@ public class BaseApplication extends Application {
 
     @Override
     public void onCreate() {
+        if(BluetoothAdapter.getDefaultAdapter().isEnabled()==false)
+            BluetoothAdapter.getDefaultAdapter().enable();
        //creating scaning service
         startService(new Intent(getBaseContext(),ScaningService.class));
         Log.e("BaseApplication","Service started in baseApplication");

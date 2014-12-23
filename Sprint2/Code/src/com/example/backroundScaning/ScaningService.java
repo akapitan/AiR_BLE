@@ -24,8 +24,9 @@ import java.util.List;
  */
 public class ScaningService extends Service {
     private Thread mThread;
-    public ScaningService scaningService = this;
+    private static ScaningService instance=null;
     public List<String> deviceList;
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -35,6 +36,8 @@ public class ScaningService extends Service {
     public void onCreate() {
         Log.e("Service", "OnCreate");
         super.onCreate();
+        getInstance();
+
         //register broadcast reciever
         IntentFilter filter = new IntentFilter();
         filter.addAction("com.example.action.DEVICE_SCANNED");
@@ -54,6 +57,16 @@ public class ScaningService extends Service {
         ///analiziranje dohvaćenih podataka
         //kreiranje notificationa
         //pokretanje glavne aplikacije
+    }
+
+    /*
+    Singletone pattern example
+     */
+    public static ScaningService getInstance(){
+        if(instance==null){
+            instance=new ScaningService();
+        }
+        return instance;
     }
 
     @Override
