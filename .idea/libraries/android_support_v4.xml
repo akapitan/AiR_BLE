@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="android-support-v4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Sprint2/Code/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Sprint2/Code/libs/ActiveAndroid.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Sprint2/Code/libs/com.pascalwelsch.holocircularprogressbar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

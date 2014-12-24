@@ -30,6 +30,7 @@
         <item >Point status</item>
         <item >Vouchers</item>
         <item >BLE test</item>
+        <item >Logout</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
@@ -38,6 +39,8 @@
         <item>@drawable/ic_people</item>
         <item>@drawable/ic_photos</item>
         <item>@drawable/ic_pages</item>
+        <item>@drawable/ic_communities</item>
+        <item>@drawable/ic_home</item>
     </array>
 
     <!-- Content Description -->

@@ -25,6 +25,7 @@
                     android:text="@string/txtPointsHeading"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"
+                    android:textColor="#444"
                     />
 
             <com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar
@@ -32,8 +33,9 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginTop="72dp"
                     app:progress="0.6"
+                    app:progress_background_color="#000"
                     app:progress_color="#f39c12" />
 
             <TextView
@@ -46,7 +48,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold|italic"
                     android:textSize="40sp"
-                    android:textColor="#fff"
+                    android:textColor="#444"
                     />
             <TextView
                     android:id="@+id/txtPointsLabel"
@@ -58,6 +60,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="normal"
                     android:textSize="22sp"
+                    android:textColor="#444"
                     />
 
             <TextView
@@ -71,6 +74,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="30sp"
                     android:textStyle="normal"
+                    android:textColor="#444"
                     />
 
             <TextView
@@ -96,6 +100,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="38sp"
                     android:textStyle="bold"
+                    android:textColor="#444"
                     />
         </RelativeLayout>
     </FrameLayout>
@@ -109,5 +114,5 @@
             android:divider="@color/list_divider"
             android:dividerHeight="1dp"
             android:listSelector="@drawable/list_selector"
-            android:background="@color/list_background"/>
+            android:background="@color/main_background"/>
 </android.support.v4.widget.DrawerLayout>

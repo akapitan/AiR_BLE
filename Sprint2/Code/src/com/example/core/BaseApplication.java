@@ -3,25 +3,28 @@ package com.example.core;
 import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
-import com.example.services.BLEScan;
+import com.example.backroundScaning.ScaningService;
 
 /**
  * Created by goran on 2.12.2014..
  */
 public class BaseApplication extends Application {
-    public BLEScan bleScan;
     private Context currentContext;
+    private static BaseApplication instance;
+
+    public BaseApplication(){
+        instance = this;
+    }
 
     @Override
     public void onCreate() {
-        super.onCreate();
-        bleScan=new BLEScan();
-
-    }
-
-    public BLEScan getObserver(){
-        return bleScan;
+        if(BluetoothAdapter.getDefaultAdapter().isEnabled()==false)
+            BluetoothAdapter.getDefaultAdapter().enable();
+       //creating scaning service
+        startService(new Intent(getBaseContext(),ScaningService.class));
+        Log.e("BaseApplication","Service started in baseApplication");
     }
 
     /**
@@ -30,6 +33,9 @@ public class BaseApplication extends Application {
      */
     public Context getCurrentContext(){
         return currentContext;
+    }
+    public static Context getStaticCurrentContext(){
+        return instance;
     }
 
     /**

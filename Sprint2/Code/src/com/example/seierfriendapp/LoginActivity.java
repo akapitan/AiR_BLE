@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.activeandroid.ActiveAndroid;
 import com.example.core.DbDataSaver;
 import com.example.fragments.LoginFragment;
+import com.example.services.BLEScan;
 import com.example.services.DataCollectedListener;
 import com.example.services.JsonParser;
 import org.apache.http.NameValuePair;
@@ -37,7 +38,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         super.onCreate(savedInstanceState);
 
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#444444")));
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         bar.hide();
         setContentView(R.layout.login_layout);
 
@@ -45,7 +46,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         jsonParser.setDataCollectedListener(this);
 
         LoginFragment firstFragment = new LoginFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).addToBackStack("").commit();
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignIn.setOnClickListener(new View.OnClickListener() {

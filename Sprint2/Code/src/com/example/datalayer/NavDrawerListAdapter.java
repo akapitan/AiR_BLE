@@ -50,7 +50,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
         TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
          
-        imgIcon.setImageResource(navDrawerItems.get(position).getIcon());        
+        imgIcon.setImageResource(navDrawerItems.get(position).getIcon());
         txtTitle.setText(navDrawerItems.get(position).getTitle());
         
         // displaying count
@@ -61,7 +61,7 @@ public class NavDrawerListAdapter extends BaseAdapter {
         	// hide the counter view
         	txtCount.setVisibility(View.GONE);
         }
-        
+
         return convertView;
 	}
 

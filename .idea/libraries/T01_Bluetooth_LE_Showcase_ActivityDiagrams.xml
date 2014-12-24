@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="T01-Bluetooth_LE_Showcase-ActivityDiagrams">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Documentation/T01-Bluetooth_LE_Showcase-ActivityDiagrams.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

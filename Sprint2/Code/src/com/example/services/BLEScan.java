@@ -1,12 +1,19 @@
 package com.example.services;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.util.SparseArray;
 import android.os.Handler;
+
+
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
@@ -14,14 +21,15 @@ import java.util.Set;
 /**
  * Created by goran on 1.12.2014..
  */
-public class BLEScan extends Observable implements BluetoothAdapter.LeScanCallback, OuterDevicesScan {
+public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesScan {
 
     private BluetoothAdapter mBluetoothAdapter;
     public BluetoothManager manager;
     private SparseArray<BluetoothDevice> mDevices;
     Handler mHandler;
-    protected Set<Observer> observers;
     Context applicationContext;
+    //Mac Addresses to filter scanned devices
+    private List<String> macAddreses;
 
     public BLEScan() {
     }
@@ -51,16 +59,17 @@ public class BLEScan extends Observable implements BluetoothAdapter.LeScanCallba
      * Method that initiates device scanning, and stops it after 2,5 seconds
      * HARDCODED TIME VALUE -> CHANGE LATER!!!.
      */
-    private void startScan(Context ctx){
+    private void startScan(Context ctx) {
         applicationContext = ctx;
-        manager=(BluetoothManager) ctx.getSystemService(ctx.BLUETOOTH_SERVICE);
-        mBluetoothAdapter=manager.getAdapter();
-        mDevices=new SparseArray<BluetoothDevice>();
-        mHandler=new Handler();
+        manager = (BluetoothManager) ctx.getSystemService(ctx.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = manager.getAdapter();
+        mDevices = new SparseArray<BluetoothDevice>();
+        mHandler = new Handler();
 
         mBluetoothAdapter.startLeScan(this);
-        mHandler.postDelayed(mStopRunnable,3000);
+        mHandler.postDelayed(mStopRunnable, 3000);
     }
+
 
     /**
      * Method which stops scanning if wasn't stopped by mHandler in startScan method.
@@ -69,21 +78,37 @@ public class BLEScan extends Observable implements BluetoothAdapter.LeScanCallba
         mBluetoothAdapter.stopLeScan(this);
     }
 
-
+    int j = 0;
     @Override
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
-        Log.e("BLE","Uredjaj: "+device.getName()+" @ " + rssi + " UUID: " + device.getAddress().toString());
-        mDevices.put(device.hashCode(),device);
-        //observable ->notify that change occured
-        setChanged();
-        notifyObservers();
+        j++;
+        for(String i : macAddreses ){
+            if(i.equals(device.getAddress().toString())){
+                Log.e("BLEScan","Device MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
+                //put devices in sparsearray
+                mDevices.put(device.hashCode(),device);
+                //send broadcast
+                if( j >5) {
+                    j=0;
+                    Intent broadcastIntent = new Intent();
+                    //broadcastIntent.setAction("com.example.backgroundScaning.ScaningService.OUTER_DEVICE_SCANNED");
+                    broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
+                    applicationContext.sendBroadcast(broadcastIntent);
+                }
+            }else{
+                Log.e("BLEScan","Device NOT MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
+            }
+        }
     }
 
     /**
-     * Interface override.
+     * Starting device scan
+     * @param ctx Current application context
+     * @param macAddresses Mac Addresses from local storage
      */
     @Override
-    public void scanForDevices(Context ctx) {
+    public void scanForDevices(Context ctx, List<String> macAddresses) {
+        this.macAddreses = macAddresses;
         startScan(ctx);
     }
 
