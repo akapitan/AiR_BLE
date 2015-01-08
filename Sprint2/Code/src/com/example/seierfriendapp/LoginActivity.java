@@ -1,6 +1,8 @@
 package com.example.seierfriendapp;
 
 import android.app.ActionBar;
+import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -9,13 +11,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.activeandroid.ActiveAndroid;
 import com.example.core.DbDataSaver;
 import com.example.fragments.LoginFragment;
+import com.example.fragments.TagIdDialogFragment;
 import com.example.services.BLEScan;
 import com.example.services.DataCollectedListener;
 import com.example.services.JsonParser;
@@ -49,6 +54,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).addToBackStack("").commit();
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
+
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,10 +70,12 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                         header
                 };
 
-                jsonParser.getData(jsonParameters);
+                DialogFragment dialog = new TagIdDialogFragment();
+                dialog.show(getSupportFragmentManager(), "TagIdDialogFragment");
 
+                /*
                 Intent i = new Intent(getApplication(), MainActivity.class);
-                startActivity(i);
+                startActivity(i);*/
             }
         });
 
@@ -84,6 +92,9 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
         ActiveAndroid.initialize(this);
     }
+
+
+
 
     @Override
     public void DataCollected(boolean dataIsCollected, boolean errors, String errorMessage) {
