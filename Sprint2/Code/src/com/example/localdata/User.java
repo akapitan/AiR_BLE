@@ -56,7 +56,7 @@ public class User extends Model {
     }
 
     public User(long idUser, boolean s1member, boolean employee, String salutation, String firstName, String lastName,
-                String title, Date birthdate, String email, int points, int level, int checkins,
+                String title, Date birthdate, String email, String password, int points, int level, int checkins,
                 Date lastCheckin, int pointsToday, String authToken)
     {
         super();
@@ -69,6 +69,7 @@ public class User extends Model {
         this.title = title;
         this.birthdate = birthdate;
         this.email = email;
+        this.password = password;
         this.points = points;
         this.level = level;
         this.checkins = checkins;

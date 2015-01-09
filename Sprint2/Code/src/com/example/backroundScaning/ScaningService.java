@@ -78,7 +78,7 @@ public class ScaningService extends Service {
     }
 
     /**
-     * Dohvaćene mac adrese koje se nalaze u lokanoj bazi!
+     * Get Mac addresses from local database
      * @return list of mac addresses of devices from local database
      */
     private List<String> getMacAdresses(){
@@ -101,8 +101,11 @@ public class ScaningService extends Service {
     }
 
     public static void startAct(Context c) {
-            Intent dialogIntent = new Intent(c, LoginActivity.class);
+            /*Intent dialogIntent = new Intent(c, LoginActivity.class);
             dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            c.startActivity(dialogIntent);
+            c.startActivity(dialogIntent);*/
+
+        NotificationLauncher nl = new NotificationLauncher();
+        nl.launchNotification(c);
     }
 }
