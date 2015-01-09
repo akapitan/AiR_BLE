@@ -20,57 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d127a962-8553-4913-a708-a63c83a22fed" name="Default" comment="Added application design">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/BLEScan$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/BLEScan$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/BLEScan$2.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/BLEScan$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/BLEScan.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/BLEScan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/core/BaseApplication.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/core/BaseApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/DataCollectedListener.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/DataCollectedListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/core/DbDataSaver.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/core/DbDataSaver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/datalayer/HttpClientService.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/datalayer/HttpClientService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/JsonParser$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/JsonParser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/JsonParser$WebServiceDataCollection.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/JsonParser$WebServiceDataCollection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/JsonParser.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/JsonParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/localdata/Beacon.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/localdata/Beacon.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/LoginActivity$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/LoginActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/LoginActivity$2.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/LoginActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/LoginActivity.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/LoginFragment.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/LoginFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/MainActivity$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/MainActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/MainActivity$SlideMenuClickListener.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/MainActivity$SlideMenuClickListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/MainActivity.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/datalayer/NavDrawerItem.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/datalayer/NavDrawerItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/datalayer/NavDrawerListAdapter.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/datalayer/NavDrawerListAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/services/OuterDevicesScan.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/services/OuterDevicesScan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/PointStatusFragment.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/PointStatusFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$array.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$array.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$attr.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$color.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$dimen.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$dimen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$drawable.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$id.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$layout.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$menu.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$string.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$style.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$styleable.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/seierfriendapp/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/NotificationLauncher.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/NotificationLauncher.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/ScaningService$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/ScaningService$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/ScaningService$Reciever.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/ScaningService$Reciever.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/ScaningService.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/backroundScaning/ScaningService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/SeierFriendApp.apk" afterPath="$PROJECT_DIR$/bin/classes/SeierFriendApp.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/SeierFriendApp.unaligned.apk" afterPath="$PROJECT_DIR$/bin/classes/SeierFriendApp.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/TagIdDialogFragment$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/TagIdDialogFragment$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/TagIdDialogFragment$2.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/TagIdDialogFragment$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/TagIdDialogFragment.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/TagIdDialogFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/localdata/User.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/localdata/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/UserInfoFragment.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/UserInfoFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/localdata/Voucher.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/localdata/Voucher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/example/fragments/VoucherFragment.class" afterPath="$PROJECT_DIR$/bin/classes/com/example/fragments/VoucherFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/core/BaseApplication.java" afterPath="$PROJECT_DIR$/src/com/example/core/BaseApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/example/seierfriendapp/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/example/seierfriendapp/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/core/DbDataSaver.java" afterPath="$PROJECT_DIR$/src/com/example/core/DbDataSaver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/seierfriendapp/LoginActivity.java" afterPath="$PROJECT_DIR$/src/com/example/seierfriendapp/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/services/BLEScan.java" afterPath="$PROJECT_DIR$/src/com/example/services/BLEScan.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/localdata/Beacon.java" afterPath="$PROJECT_DIR$/src/com/example/localdata/Beacon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/backroundScaning/NotificationLauncher.java" afterPath="$PROJECT_DIR$/src/com/example/backroundScaning/NotificationLauncher.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java" afterPath="$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/localdata/User.java" afterPath="$PROJECT_DIR$/src/com/example/localdata/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SeierFriendApp.iws" />
@@ -97,16 +61,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/example/seierfriendapp/LoginActivity.java">
+      <file leaf-file-name="Beacon.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/localdata/Beacon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67228913" vertical-offset="2033" max-vertical-offset="2448">
-              <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="123" max-vertical-offset="850">
+              <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2201#3904#0" expanded="true" />
-                <element signature="e#3209#3238#0" expanded="true" />
-                <element signature="e#3903#3904#0" expanded="true" />
+                <element signature="e#692#693#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#753#754#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#817#818#0" expanded="true" />
+                <element signature="e#847#848#0" expanded="true" />
+                <element signature="e#893#894#0" expanded="true" />
+                <element signature="e#933#934#0" expanded="true" />
+                <element signature="e#976#977#0" expanded="true" />
+                <element signature="e#1041#1042#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BLEScan.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/example/services/BLEScan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.988858" vertical-offset="0" max-vertical-offset="1870">
+              <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+              <folding>
+                <element signature="e#1078#1199#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+                <element signature="e#3753#3754#0" expanded="true" />
+                <element signature="e#3784#3785#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OuterDevicesScan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/services/OuterDevicesScan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScaningService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
+              <caret line="49" column="56" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
+              <folding>
+                <element signature="e#1517#1690#0" expanded="true" />
+                <element signature="e#1689#1690#0" expanded="true" />
+                <element signature="e#2540#2548#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,45 +124,8 @@
       <file leaf-file-name="BaseApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/core/BaseApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1122">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-              <folding>
-                <element signature="e#548#549#0" expanded="true" />
-                <element signature="e#579#580#0" expanded="true" />
-                <element signature="e#1188#1189#0" expanded="true" />
-                <element signature="e#1225#1226#0" expanded="true" />
-                <element signature="e#1278#1279#0" expanded="true" />
-                <element signature="e#1309#1310#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbDataSaver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/core/DbDataSaver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-              <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/localdata/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2169" max-vertical-offset="2652">
-              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Beacon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/localdata/Beacon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="99" max-vertical-offset="680">
-              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1020">
+              <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -190,7 +162,6 @@
         <option value="$PROJECT_DIR$/src/com/example/fragments/UserInfoFragment.java" />
         <option value="$PROJECT_DIR$/res/layout/fragment_user_info.xml" />
         <option value="$PROJECT_DIR$/src/com/example/fragments/PointStatusFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/example/services/BLEScan.java" />
         <option value="$PROJECT_DIR$/src/com/example/datalayer/NavDrawerListAdapter.java" />
         <option value="$PROJECT_DIR$/res/drawable-hdpi/list_item_bg_normal.xml" />
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
@@ -208,12 +179,15 @@
         <option value="$PROJECT_DIR$/res/layout/dialog_tag_id.xml" />
         <option value="$PROJECT_DIR$/src/com/example/fragments/TagIdDialogFragment.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/backroundScaning/NotificationLauncher.java" />
-        <option value="$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java" />
         <option value="$PROJECT_DIR$/src/com/example/core/BaseApplication.java" />
         <option value="$PROJECT_DIR$/src/com/example/core/DbDataSaver.java" />
         <option value="$PROJECT_DIR$/src/com/example/localdata/User.java" />
         <option value="$PROJECT_DIR$/src/com/example/seierfriendapp/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/backroundScaning/NotificationLauncher.java" />
+        <option value="$PROJECT_DIR$/src/com/example/localdata/Notification.java" />
+        <option value="$PROJECT_DIR$/src/com/example/localdata/Beacon.java" />
+        <option value="$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java" />
+        <option value="$PROJECT_DIR$/src/com/example/services/BLEScan.java" />
       </list>
     </option>
   </component>
@@ -221,10 +195,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="1358" />
+    <option name="y" value="-437" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -790,7 +764,7 @@
       <workItem from="1420628565356" duration="85000" />
       <workItem from="1420726511760" duration="8453000" />
       <workItem from="1420807387244" duration="894000" />
-      <workItem from="1420808313966" duration="816000" />
+      <workItem from="1420808313966" duration="7869000" />
     </task>
     <task id="LOCAL-00001" summary="Added application design">
       <created>1419382855842</created>
@@ -802,10 +776,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66639000" />
+    <option name="totallyTimeSpent" value="73692000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-437" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -828,8 +802,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32676518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.272578" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24670571" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19001086" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17552084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -864,7 +838,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -873,30 +847,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/example/seierfriendapp/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2057">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2201#3904#0" expanded="true" />
-            <element signature="e#3209#3238#0" expanded="true" />
-            <element signature="e#3903#3904#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1139">
-          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/list_selector.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
@@ -1067,13 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/services/OuterDevicesScan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/fragment_ble.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
@@ -1099,13 +1042,6 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/services/BLEScan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.9294405" vertical-offset="0" max-vertical-offset="1751">
-          <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/fragments/PointStatusFragment.java">
@@ -1247,69 +1183,126 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java">
+    <entry file="file://$PROJECT_DIR$/src/com/example/core/DbDataSaver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38554215" vertical-offset="1132" max-vertical-offset="1615">
-          <caret line="98" column="64" selection-start-line="98" selection-start-column="64" selection-end-line="98" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.24578314" vertical-offset="612" max-vertical-offset="1088">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/localdata/Voucher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0963855" vertical-offset="1836" max-vertical-offset="2312">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/localdata/Notification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.86382395" vertical-offset="341" max-vertical-offset="1122">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1269#1270#0" expanded="true" />
+            <element signature="e#1331#1332#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/backroundScaning/NotificationLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6313253" vertical-offset="469" max-vertical-offset="884">
-          <caret line="43" column="54" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/core/BaseApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="639" max-vertical-offset="1122">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-          <folding>
-            <element signature="e#548#549#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#1188#1189#0" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
-            <element signature="e#1278#1279#0" expanded="true" />
-            <element signature="e#1309#1310#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/core/DbDataSaver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.4621733" vertical-offset="225" max-vertical-offset="952">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/localdata/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2169" max-vertical-offset="2652">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/localdata/Beacon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="99" max-vertical-offset="680">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.4621733" vertical-offset="1925" max-vertical-offset="2652">
+          <caret line="172" column="28" selection-start-line="172" selection-start-column="28" selection-end-line="172" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/seierfriendapp/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67228913" vertical-offset="2033" max-vertical-offset="2448">
-          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.7567954" vertical-offset="1698" max-vertical-offset="2397">
+          <caret line="137" column="75" selection-start-line="137" selection-start-column="73" selection-end-line="137" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2201#3904#0" expanded="true" />
-            <element signature="e#3209#3238#0" expanded="true" />
-            <element signature="e#3903#3904#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/core/BaseApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1020">
+          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/services/OuterDevicesScan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/backroundScaning/ScaningService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
+          <caret line="49" column="56" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
+          <folding>
+            <element signature="e#1517#1690#0" expanded="true" />
+            <element signature="e#1689#1690#0" expanded="true" />
+            <element signature="e#2540#2548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/localdata/Beacon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="123" max-vertical-offset="850">
+          <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+          <folding>
+            <element signature="e#692#693#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#753#754#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/services/BLEScan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.988858" vertical-offset="0" max-vertical-offset="1870">
+          <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+          <folding>
+            <element signature="e#1078#1199#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#3753#3754#0" expanded="true" />
+            <element signature="e#3784#3785#0" expanded="true" />
           </folding>
         </state>
       </provider>

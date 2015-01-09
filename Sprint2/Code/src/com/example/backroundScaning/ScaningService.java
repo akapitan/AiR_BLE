@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 import com.example.core.BaseApplication;
 import com.example.fragments.PointStatusFragment;
+import com.example.localdata.Beacon;
 import com.example.seierfriendapp.LoginActivity;
 import com.example.seierfriendapp.MainActivity;
 import com.example.services.BLEScan;
@@ -82,14 +83,14 @@ public class ScaningService extends Service {
      * @return list of mac addresses of devices from local database
      */
     private List<String> getMacAdresses(){
-        //IMPORTAINT! -> currently hardcoded, get from shared preferences
+        Beacon mac=new Beacon();
         List<String> macs = new LinkedList<String>();
-        String mac = "FE:0F:91:39:CF:90";
-        macs.add(mac);
-
+        for(Beacon i : mac.getMacAdresses()){
+            macs.add(i.getMac());
+        }
         return macs;
     }
-    boolean started = false;
+
     public static class Reciever extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {

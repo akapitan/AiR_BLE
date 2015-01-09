@@ -67,7 +67,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
         mHandler = new Handler();
 
         mBluetoothAdapter.startLeScan(this);
-        mHandler.postDelayed(mStopRunnable, 3000);
+        mHandler.postDelayed(mStopRunnable, 9000);
     }
 
 
@@ -78,7 +78,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
         mBluetoothAdapter.stopLeScan(this);
     }
 
-    int j = 0;
+    int j = 4;
     @Override
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
         j++;
@@ -88,6 +88,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                 //put devices in sparsearray
                 mDevices.put(device.hashCode(),device);
                 //send broadcast
+                //just for slowing down broadcast events
                 if( j >5) {
                     j=0;
                     Intent broadcastIntent = new Intent();
@@ -95,6 +96,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                     broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
                     applicationContext.sendBroadcast(broadcastIntent);
                 }
+                break;
             }else{
                 Log.e("BLEScan","Device NOT MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
             }
