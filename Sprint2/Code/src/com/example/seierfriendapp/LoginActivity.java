@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,7 +59,35 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         final EditText username = (EditText) findViewById(R.id.editText1);
         final EditText password = (EditText) findViewById(R.id.editText2);
 
+
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        //button disabled before creds are entered
+        btnSignIn.setEnabled(false);
+        btnSignIn.setBackgroundColor(0xFFAAAAAA);
+
+        //Text watcher, for button disable if username is empty
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!(username.getText().toString().isEmpty() || password.getText().toString().isEmpty())){
+                    btnSignIn.setEnabled(true);
+                    //Log.e("LOGIN", username.getText().toString() + password.getText().toString());
+                    btnSignIn.setBackgroundColor(0xFFE25A10);
+                }else{
+                    btnSignIn.setBackgroundColor(0xFFAAAAAA);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+        username.addTextChangedListener(textWatcher);
+        password.addTextChangedListener(textWatcher);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
