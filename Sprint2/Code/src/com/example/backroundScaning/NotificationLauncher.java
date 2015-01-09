@@ -36,7 +36,7 @@ public class NotificationLauncher {
         //login activity intent
         Intent dialogIntent = new Intent(context, LoginActivity.class);
         //extras for check in recognition, used in loginActivity
-        dialogIntent.putExtra("checkIn", true);
+        dialogIntent.putExtra("checkIn", "checkIn");
 
         //task builder for creating notification with intent
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);

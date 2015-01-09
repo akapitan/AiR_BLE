@@ -22,6 +22,7 @@ import com.activeandroid.ActiveAndroid;
 import com.example.core.DbDataSaver;
 import com.example.fragments.LoginFragment;
 import com.example.fragments.TagIdDialogFragment;
+import com.example.localdata.Login;
 import com.example.services.DataCollectedListener;
 import com.example.services.JsonParser;
 import org.apache.http.NameValuePair;
@@ -88,9 +89,13 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         username.addTextChangedListener(textWatcher);
         password.addTextChangedListener(textWatcher);
 
-        if(getIntent().getExtras().getString("checkIn") != null && getIntent().getExtras().getString("checkIn").equals(true)){
-            //TO DO: start checkin!
-
+        //Check if started from notification
+        try {
+            if (getIntent().getExtras().getString("checkIn") != null && getIntent().getExtras().getString("checkIn").equals("checkIn")) {
+                //TO DO: start checkin!
+                Log.e("STARTED FROM INTENT!!!",getIntent().getExtras().getString("checkIn").toString());
+            }
+        }catch (Exception e){
         }
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +106,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
                 userLogin = username.getText().toString();
                 passLogin = password.getText().toString();
+                //saveLogin(TagIdDialogFragment.TAGID, userLogin, false);
 
                 // get data from server
                 getUserDataFromServer(userLogin, passLogin);
@@ -183,10 +189,23 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
      * @param password entered password
      */
     public void checkIfUserExists(String username, String password){
-
+        /*
+        * TO DO PROVJERI U BAZI DAL POSTOJI username i pass
+        * ako ne postoji pokreći fragment
+        * i na listeneru cekaj unos i onda nakon toga
+        *
+        * */
         // first login - dialog for entering tag-id
         DialogFragment dialog = new TagIdDialogFragment();
         dialog.show(getSupportFragmentManager(), "TagIdDialogFragment");
+    }
+
+    private void saveLogin(String tagId, String email, boolean loggedIn ){
+        Login login=new Login();
+        login.setEmail(email);
+        login.setTAGID(tagId);
+        login.setLoggedIn(loggedIn);
+        login.save();
     }
 
 }

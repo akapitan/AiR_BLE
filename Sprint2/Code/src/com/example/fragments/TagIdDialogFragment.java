@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.seierfriendapp.MainActivity;
@@ -19,6 +20,7 @@ import com.example.seierfriendapp.R;
  */
 public class TagIdDialogFragment extends DialogFragment {
 
+    public static String TAGID;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -33,6 +35,8 @@ public class TagIdDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        EditText tagId= (EditText) TagIdDialogFragment.this.getDialog().findViewById(R.id.tagIdString);
+                        TAGID=tagId.getText().toString();
                         Toast.makeText(getActivity(), "Tag ID successfully saved!", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getActivity(), MainActivity.class);
                         startActivity(i);
