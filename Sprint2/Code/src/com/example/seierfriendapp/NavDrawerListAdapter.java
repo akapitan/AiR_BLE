@@ -1,4 +1,4 @@
-package com.example.datalayer;
+package com.example.seierfriendapp;
 
 
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.seierfriendapp.R;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 	

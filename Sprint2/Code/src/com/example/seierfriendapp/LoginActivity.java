@@ -45,27 +45,28 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //remove action bar
         ActionBar bar = getActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         bar.hide();
         setContentView(R.layout.login_layout);
 
+        //json parser init
         jsonParser = new JsonParser(getApplicationContext());
         jsonParser.setDataCollectedListener(this);
 
         LoginFragment firstFragment = new LoginFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).addToBackStack("").commit();
-
+        //username and password text field
         final EditText username = (EditText) findViewById(R.id.editText1);
         final EditText password = (EditText) findViewById(R.id.editText2);
-
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         //button disabled before creds are entered
         btnSignIn.setEnabled(false);
         btnSignIn.setBackgroundColor(0xFFAAAAAA);
 
-        //Text watcher, for button disable if username is empty
+        //Text watcher, for button disable if username & pass is empty
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -80,59 +81,35 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                     btnSignIn.setBackgroundColor(0xFFAAAAAA);
                 }
             }
-
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) { }
         };
+        //set listeners
         username.addTextChangedListener(textWatcher);
         password.addTextChangedListener(textWatcher);
+
+        if(getIntent().getExtras().getString("checkIn") != null && getIntent().getExtras().getString("checkIn").equals(true)){
+            //TO DO: start checkin!
+
+        }
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Resources res = getResources();
+
 
                 userLogin = username.getText().toString();
                 passLogin = password.getText().toString();
 
-                /*url = String.format(res.getString(R.string.loginURI));
-                header = new ArrayList<NameValuePair>();
-                header.add(new BasicNameValuePair("Authorization", "Basic d2Vic2l0ZTo3ejJFRVdDNA=="));
-                postParams = new ArrayList<NameValuePair>();
-                postParams.add(new BasicNameValuePair("email", userLogin));
-                postParams.add(new BasicNameValuePair("password", passLogin));
-                jsonParameters = new Object[]{
-                        Uri.parse(url),
-                        "post",
-                        header,
-                        postParams
-                };
-
-                jsonParser.getData(jsonParameters);*/
-
-                url = String.format(res.getString(R.string.wsURI));
-                header = new ArrayList<NameValuePair>();
-                header.add(new BasicNameValuePair("Authorization", authToken));
-                jsonParameters = new Object[]{
-                        Uri.parse(url),
-                        "get",
-                        header
-                };
-
-                jsonParser.getData(jsonParameters);
-
-                DialogFragment dialog = new TagIdDialogFragment();
-                dialog.show(getSupportFragmentManager(), "TagIdDialogFragment");
-
-                /*
-                Intent i = new Intent(getApplication(), MainActivity.class);
-                startActivity(i);*/
+                // get data from server
+                getUserDataFromServer(userLogin, passLogin);
+                //check if users exists. TAG-ID!
+                checkIfUserExists(userLogin, passLogin);
             }
         });
 
+        //registration - open url in browser
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,4 +146,47 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
             Toast.makeText(this, "MyActivity, data is not collected because:\n\n" + errorMessage, Toast.LENGTH_SHORT).show();
         }
     }
+    public void getUserDataFromServer(String username, String password){
+
+        /*url = String.format(res.getString(R.string.loginURI));
+                header = new ArrayList<NameValuePair>();
+                header.add(new BasicNameValuePair("Authorization", "Basic d2Vic2l0ZTo3ejJFRVdDNA=="));
+                postParams = new ArrayList<NameValuePair>();
+                postParams.add(new BasicNameValuePair("email", userLogin));
+                postParams.add(new BasicNameValuePair("password", passLogin));
+                jsonParameters = new Object[]{
+                        Uri.parse(url),
+                        "post",
+                        header,
+                        postParams
+                };
+
+                jsonParser.getData(jsonParameters);*/
+        //get user data from server
+        //AUTHTOKEN CURRENTLY HARDCODED, LOGIN API DOESN'T WORK! CHANGE LATER!!!
+        Resources res = getResources();
+        url = String.format(res.getString(R.string.wsURI));
+        header = new ArrayList<NameValuePair>();
+        header.add(new BasicNameValuePair("Authorization", authToken));
+        jsonParameters = new Object[]{
+                Uri.parse(url),
+                "get",
+                header
+        };
+
+        jsonParser.getData(jsonParameters);
+    }
+
+    /**
+     * Method checks if user that wants to login exists, if it doesn't, dialog shows up.
+     * @param username entered username
+     * @param password entered password
+     */
+    public void checkIfUserExists(String username, String password){
+
+        // first login - dialog for entering tag-id
+        DialogFragment dialog = new TagIdDialogFragment();
+        dialog.show(getSupportFragmentManager(), "TagIdDialogFragment");
+    }
+
 }

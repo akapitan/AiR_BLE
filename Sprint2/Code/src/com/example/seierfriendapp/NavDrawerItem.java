@@ -1,4 +1,4 @@
-package com.example.datalayer;
+package com.example.seierfriendapp;
 
 public class NavDrawerItem {
 	

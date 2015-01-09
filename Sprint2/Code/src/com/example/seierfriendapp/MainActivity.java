@@ -1,8 +1,6 @@
 package com.example.seierfriendapp;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Set;
 
 import android.app.Activity;
@@ -10,8 +8,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -22,12 +18,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.example.core.BaseApplication;
-import com.example.datalayer.NavDrawerItem;
-import com.example.datalayer.NavDrawerListAdapter;
 import com.example.fragments.*;
 import com.example.services.BLEScan;
 import com.example.services.OuterDevicesScan;

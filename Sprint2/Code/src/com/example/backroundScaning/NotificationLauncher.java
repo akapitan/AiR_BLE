@@ -24,6 +24,7 @@ public class NotificationLauncher {
 
         context = c;
         //check if there was notification launched
+            //TO DO!!!
 
         //check if there is user that is logged in
 
@@ -34,8 +35,10 @@ public class NotificationLauncher {
 
         //login activity intent
         Intent dialogIntent = new Intent(context, LoginActivity.class);
-        //dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //extras for check in recognition, used in loginActivity
+        dialogIntent.putExtra("checkIn", true);
 
+        //task builder for creating notification with intent
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(LoginActivity.class);
         stackBuilder.addNextIntent(dialogIntent);

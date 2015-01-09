@@ -89,7 +89,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                 mDevices.put(device.hashCode(),device);
                 //send broadcast
                 //just for slowing down broadcast events
-                if( j >5) {
+                if( j > 5) {
                     j=0;
                     Intent broadcastIntent = new Intent();
                     //broadcastIntent.setAction("com.example.backgroundScaning.ScaningService.OUTER_DEVICE_SCANNED");
