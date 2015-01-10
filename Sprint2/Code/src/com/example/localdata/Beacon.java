@@ -45,7 +45,7 @@ public class Beacon extends Model {
         this.idBeacon = idBeacon;
     }
 
-    public List<Beacon> getMacAdresses(){
+   /* public List<Beacon> getMacAdresses(){
         return  new Select().from(Beacon.class).execute();
-    }
+    }*/
 }

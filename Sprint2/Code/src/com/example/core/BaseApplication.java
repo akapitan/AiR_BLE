@@ -34,7 +34,7 @@ public class BaseApplication extends Application {
         /**
          * Save beacon mac to local db
          */
-        saveMac();
+       // saveMac();
     }
 
     /**

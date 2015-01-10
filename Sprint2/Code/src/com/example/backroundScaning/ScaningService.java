@@ -45,7 +45,7 @@ public class ScaningService extends Service {
         this.registerReceiver(new Reciever(), filter);
 
         //get mac adresses
-        deviceList = getMacAdresses();
+       // deviceList = getMacAdresses();
         ///preko interfacea pokreni skeniranje
         final OuterDevicesScan outerDevicesScan = new BLEScan();
         mThread = new Thread(new Runnable() {
@@ -82,7 +82,7 @@ public class ScaningService extends Service {
      * Get Mac addresses from local database
      * @return list of mac addresses of devices from local database
      */
-    private List<String> getMacAdresses(){
+    /*private List<String> getMacAdresses(){
         Beacon mac=new Beacon();
         List<String> macs = new LinkedList<String>();
         for(Beacon i : mac.getMacAdresses()){
@@ -90,7 +90,7 @@ public class ScaningService extends Service {
         }
         return macs;
     }
-
+*/
     public static class Reciever extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {

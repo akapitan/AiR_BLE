@@ -27,13 +27,12 @@
     <string name="enter_tag_id">Enter tag ID</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="tag_label">It seems this is Your first sign in. Please enter Your Tag ID.</string>
+    <string name="tag_label">It seems this is your first sign in. Please enter your Tag ID.</string>
 
     <string-array name="nav_drawer_items">
         <item >User info</item>
         <item >Point status</item>
         <item >Vouchers</item>
-        <item >BLE test</item>
         <item >Logout</item>
     </string-array>
 
@@ -43,9 +42,9 @@
         <item>@drawable/ic_people</item>
         <item>@drawable/ic_photos</item>
         <item>@drawable/ic_pages</item>
-        <item>@drawable/ic_whats_hot</item>
         <item>@drawable/ic_home</item>
     </array>
+
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
