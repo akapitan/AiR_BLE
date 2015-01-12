@@ -1,4 +1,4 @@
-package com.example.backroundScaning;
+package com.example.backgroundScanning;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;

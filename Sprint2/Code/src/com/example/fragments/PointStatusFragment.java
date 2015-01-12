@@ -40,9 +40,9 @@ public class PointStatusFragment extends Fragment {
         User u = new Select().from(User.class).where("authToken == ?", authToken).executeSingle();
 
         TextView points = ((TextView) getView().findViewById(R.id.txtCurrentPoints));
-        points.setText(String.valueOf(u.getPoints()));
+        //points.setText(String.valueOf(u.getPoints()));
 
         TextView name = ((TextView) getView().findViewById(R.id.txtFriendName));
-        name.setText(u.getFirstName() + " " + u.getLastName());
+        //name.setText(u.getFirstName() + " " + u.getLastName());
     }
 }

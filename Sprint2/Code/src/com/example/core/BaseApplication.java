@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import com.activeandroid.ActiveAndroid;
-import com.example.backroundScaning.ScaningService;
+import com.example.backgroundScanning.ScaningService;
 import com.example.localdata.Beacon;
 
 
@@ -33,7 +33,7 @@ public class BaseApplication extends Application {
         ActiveAndroid.initialize(this);
 
         //Save device mac to local db
-        saveMac();
+        //saveMac();
     }
 
     /**
