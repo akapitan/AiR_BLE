@@ -3,7 +3,6 @@ package com.example.seierfriendapp;
 import java.util.ArrayList;
 import java.util.Set;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.bluetooth.BluetoothAdapter;
@@ -31,18 +30,7 @@ public class MainActivity extends FragmentActivity {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 
-	//FOR BLE TEST
-	public BluetoothAdapter BA;
-	private Set<BluetoothDevice> pairedDevices;
-	OuterDevicesScan devicesScan;
-	BLEScan bleScan;
 	BaseApplication baseApp;
-	/* delete testing
-	public Context currentContext;
-	ArrayList<String> listaUredjaja;
-	ArrayAdapter<String> listAdapter;
-	Bundle bundle;*/
-
 
 	// nav drawer title
 	private CharSequence mDrawerTitle;
@@ -70,7 +58,7 @@ public class MainActivity extends FragmentActivity {
 		// nav drawer icons from resources
 		navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
-
+		//set layout for sidebar
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerLinear = (LinearLayout) findViewById(R.id.left_drawer);
 		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);

@@ -19,14 +19,19 @@ import java.util.Date;
 public class NotificationLauncher {
     public Context context;
 
-
+    /**
+     * Launch notification with default title and text. Put other notification
+     * logic if needed
+     * @param c Current application context
+     */
     public void launchNotification(Context c){
 
         context = c;
         //check if there was notification launched
-            //TO DO!!!
+            //TO DO!
 
         //check if there is user that is logged in
+            //TO DO!
 
         //create notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context).
@@ -43,16 +48,21 @@ public class NotificationLauncher {
         stackBuilder.addParentStack(LoginActivity.class);
         stackBuilder.addNextIntent(dialogIntent);
 
+        //intent for notification, update current notification if it's there
         PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(resultPendingIntent);
 
         saveNotification();
-
+        //get system service and notify
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0,builder.build());
     }
 
+    /**
+     * Save notification for checking when was last notification sent
+     */
     public void saveNotification(){
+
         Notification notification=new Notification();
         Calendar calendar=Calendar.getInstance();
         Date date=calendar.getTime();

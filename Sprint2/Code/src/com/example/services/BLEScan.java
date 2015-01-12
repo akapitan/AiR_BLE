@@ -1,22 +1,14 @@
 package com.example.services;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
+import android.os.Handler;
 import android.util.Log;
 import android.util.SparseArray;
-import android.os.Handler;
-
-
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
 
 /**
  * Created by goran on 1.12.2014..
@@ -35,16 +27,6 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
     }
 
     /**
-     * Start scanning for BLE devices (in new thread)
-     */
-    private Runnable mStartRunnable=new Runnable() {
-        @Override
-        public void run() {
-            startScan(applicationContext);
-        }
-    };
-
-    /**
      * Stop scanning for BLE devices (stop thread)
      */
     private Runnable mStopRunnable=new Runnable() {
@@ -56,16 +38,18 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
     };
 
     /**
-     * Method that initiates device scanning, and stops it after 2,5 seconds
+     * Method that initiates device scanning, and stops it after 9 seconds
      * HARDCODED TIME VALUE -> CHANGE LATER!!!.
      */
     private void startScan(Context ctx) {
         applicationContext = ctx;
+        //get system service for Bluetooth manager
         manager = (BluetoothManager) ctx.getSystemService(ctx.BLUETOOTH_SERVICE);
         mBluetoothAdapter = manager.getAdapter();
+        //array that will scanned devices will be stored
         mDevices = new SparseArray<BluetoothDevice>();
         mHandler = new Handler();
-
+        //start scanning
         mBluetoothAdapter.startLeScan(this);
         mHandler.postDelayed(mStopRunnable, 9000);
     }
@@ -77,11 +61,12 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
     private void stopScan(){
         mBluetoothAdapter.stopLeScan(this);
     }
-
+    // mechanism for making less broadcast events. Every fifth time that scanning service recognise device it will trigger broadcast event
     int j = 4;
     @Override
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
         j++;
+        //check if any of MAC addresses match, Break after first match
         for(String i : macAddreses ){
             if(i.equals(device.getAddress().toString())){
                 Log.e("BLEScan","Device MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
@@ -92,7 +77,6 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                 if( j > 5) {
                     j=0;
                     Intent broadcastIntent = new Intent();
-                    //broadcastIntent.setAction("com.example.backgroundScaning.ScaningService.OUTER_DEVICE_SCANNED");
                     broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
                     applicationContext.sendBroadcast(broadcastIntent);
                 }

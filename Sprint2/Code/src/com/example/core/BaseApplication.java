@@ -9,7 +9,6 @@ import com.activeandroid.ActiveAndroid;
 import com.example.backroundScaning.ScaningService;
 import com.example.localdata.Beacon;
 
-import java.util.List;
 
 /**
  * Created by goran on 2.12.2014..
@@ -24,6 +23,7 @@ public class BaseApplication extends Application {
 
     @Override
     public void onCreate() {
+        //enable bluetooth if it's disabled
         if(BluetoothAdapter.getDefaultAdapter().isEnabled()==false)
             BluetoothAdapter.getDefaultAdapter().enable();
         //creating scaning service
@@ -31,10 +31,9 @@ public class BaseApplication extends Application {
         Log.e("BaseApplication","Service started in baseApplication");
 
         ActiveAndroid.initialize(this);
-        /**
-         * Save beacon mac to local db
-         */
-       // saveMac();
+
+        //Save device mac to local db
+        saveMac();
     }
 
     /**
@@ -44,6 +43,11 @@ public class BaseApplication extends Application {
     public Context getCurrentContext(){
         return currentContext;
     }
+
+    /**
+     * Method for getting current context (static)
+     * @return current context
+     */
     public static Context getStaticCurrentContext(){
         return instance;
     }
@@ -57,6 +61,9 @@ public class BaseApplication extends Application {
         Log.d("SET CURRENT CONTEXT", "Current context setted");
     }
 
+    /**
+     * Save device MAC addresses to local database
+     */
     public void saveMac(){
         Beacon beacon = new Beacon();
         beacon.setMac("FE:0F:91:39:CF:90");

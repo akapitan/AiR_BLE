@@ -37,7 +37,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
     JsonParser jsonParser;
     Button btnSignIn;
     Button btnRegister;
-    String authToken = "d68d25b7-2f8f-4b0f-b848-66a8762d93b8";
+    String authToken = "1b38c7e6-78c2-4eaf-8810-eaf1f808133e";
     String url, userLogin, passLogin;
     ArrayList<NameValuePair> header, postParams;
     Object[] jsonParameters;
@@ -45,7 +45,8 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //initialize active android
+        ActiveAndroid.initialize(this);
         //remove action bar
         ActionBar bar = getActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
@@ -58,11 +59,13 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
         LoginFragment firstFragment = new LoginFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, firstFragment).addToBackStack("").commit();
+
         //username and password text field
         final EditText username = (EditText) findViewById(R.id.editText1);
         final EditText password = (EditText) findViewById(R.id.editText2);
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
+
         //button disabled before creds are entered
         btnSignIn.setEnabled(false);
         btnSignIn.setBackgroundColor(0xFFAAAAAA);
@@ -74,9 +77,9 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //if username and password empty disable button
                 if(!(username.getText().toString().isEmpty() || password.getText().toString().isEmpty())){
                     btnSignIn.setEnabled(true);
-                    //Log.e("LOGIN", username.getText().toString() + password.getText().toString());
                     btnSignIn.setBackgroundColor(0xFFE25A10);
                 }else{
                     btnSignIn.setBackgroundColor(0xFFAAAAAA);
@@ -93,7 +96,8 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         try {
             if (getIntent().getExtras().getString("checkIn") != null && getIntent().getExtras().getString("checkIn").equals("checkIn")) {
                 //TO DO: start checkin!
-                Log.e("STARTED FROM INTENT!!!",getIntent().getExtras().getString("checkIn").toString());
+
+                Log.e("STARTED FROM INTENT!",getIntent().getExtras().getString("checkIn").toString());
             }
         }catch (Exception e){
         }
@@ -101,8 +105,6 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
                 userLogin = username.getText().toString();
                 passLogin = password.getText().toString();
@@ -127,20 +129,28 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
             }
         });
 
-        ActiveAndroid.initialize(this);
     }
 
+    /**
+     * Listener triggered when data is collected from web.
+     * @param dataIsCollected - did we get the data
+     * @param errors - were there any errors
+     * @param errorMessage - if there were, what was it
+     */
     @Override
     public void DataCollected(boolean dataIsCollected, boolean errors, String errorMessage) {
         if (dataIsCollected) {
+            //get data from JsonParser class
             JSONObject jo = jsonParser.getJson();
             try {
                 Toast.makeText(this, "MyActivity, data collected \n" +
                         "Name: " + jo.getString("id"), Toast.LENGTH_SHORT).show();
+                //Save authorization to shared preferences
                 SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("authToken", authToken);
                 editor.commit();
+                //save login to local db. Used for starting "input Tag ID" dialog in login
                 DbDataSaver dbSaver = new DbDataSaver();
                 dbSaver.saveUserData(jo, passLogin, authToken);
 
@@ -168,10 +178,14 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                 };
 
                 jsonParser.getData(jsonParameters);*/
+
         //get user data from server
         //AUTHTOKEN CURRENTLY HARDCODED, LOGIN API DOESN'T WORK! CHANGE LATER!!!
         Resources res = getResources();
+        //get url from resources
         url = String.format(res.getString(R.string.wsURI));
+
+        //create heaader for web api. Authorization + authtoken
         header = new ArrayList<NameValuePair>();
         header.add(new BasicNameValuePair("Authorization", authToken));
         jsonParameters = new Object[]{
@@ -190,17 +204,25 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
      */
     public void checkIfUserExists(String username, String password){
         /*
-        * TO DO PROVJERI U BAZI DAL POSTOJI username i pass
-        * ako ne postoji pokreći fragment
-        * i na listeneru cekaj unos i onda nakon toga
-        *
+        * To Do:
+        * chechk if username and password exists in local database
+        * if not start "input Tag ID dialog"
+        * and create listener for input result of that dialog
         * */
-        // first login - dialog for entering tag-id
+
+         // first login - dialog for entering tag-id
         DialogFragment dialog = new TagIdDialogFragment();
         dialog.show(getSupportFragmentManager(), "TagIdDialogFragment");
     }
 
-    private void saveLogin(String tagId, String email, boolean loggedIn ){
+    /**
+     * Save successful login. Used later for auto login.
+     * @param tagId Tag id from dialog input
+     * @param email Email from input text
+     * @param password Password from input text
+     * @param loggedIn is user logged in
+     */
+    private void saveLogin(String tagId, String email, String password, boolean loggedIn ){
         Login login=new Login();
         login.setEmail(email);
         login.setTAGID(tagId);

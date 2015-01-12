@@ -20,7 +20,7 @@ public class PointStatusFragment extends Fragment {
     /*
     *  TO DO read authToken from Shared Preferences
     */
-    String authToken = "d68d25b7-2f8f-4b0f-b848-66a8762d93b8";
+    String authToken = "1b38c7e6-78c2-4eaf-8810-eaf1f808133e";
 
 	public PointStatusFragment(){}
 
@@ -40,9 +40,9 @@ public class PointStatusFragment extends Fragment {
         User u = new Select().from(User.class).where("authToken == ?", authToken).executeSingle();
 
         TextView points = ((TextView) getView().findViewById(R.id.txtCurrentPoints));
-        //points.setText(String.valueOf(u.getPoints()));
+        points.setText(String.valueOf(u.getPoints()));
 
         TextView name = ((TextView) getView().findViewById(R.id.txtFriendName));
-        //name.setText(u.getFirstName() + " " + u.getLastName());
+        name.setText(u.getFirstName() + " " + u.getLastName());
     }
 }

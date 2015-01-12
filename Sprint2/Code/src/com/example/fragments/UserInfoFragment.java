@@ -33,9 +33,9 @@ public class UserInfoFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        //select user from db
         User u = new Select().from(User.class).where("authToken == ?", authToken).executeSingle();
-
+        //set user data
         TextView firstName = ((TextView) getView().findViewById(R.id.txtFirstName));
         firstName.setText(u.getFirstName());
 

@@ -14,6 +14,8 @@ public class Login extends Model {
     private long idLogin;
     @Column(name = "email")
     private String email;
+    @Column(name="password")
+    private String password;
     @Column(name="TAGID")
     private String TAGID;
     @Column(name="loggedIn")
@@ -23,10 +25,11 @@ public class Login extends Model {
         super();
     }
 
-    public Login(long idLogin, String email, String TAGID, boolean loggedIn){
+    public Login(long idLogin, String email, String TAGID, String password, boolean loggedIn){
         super();
         this.idLogin=idLogin;
         this.email=email;
+        this.password = password;
         this.TAGID=TAGID;
         this.loggedIn=loggedIn;
     }
@@ -41,6 +44,10 @@ public class Login extends Model {
 
     public String getTAGID() {
         return TAGID;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public boolean isLoggedIn() {
@@ -61,5 +68,9 @@ public class Login extends Model {
 
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

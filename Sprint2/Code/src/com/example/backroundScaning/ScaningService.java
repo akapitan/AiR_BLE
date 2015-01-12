@@ -5,15 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Point;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 import com.example.core.BaseApplication;
-import com.example.fragments.PointStatusFragment;
 import com.example.localdata.Beacon;
-import com.example.seierfriendapp.LoginActivity;
-import com.example.seierfriendapp.MainActivity;
 import com.example.services.BLEScan;
 import com.example.services.OuterDevicesScan;
 
@@ -22,6 +18,8 @@ import java.util.List;
 
 /**
  * Created by goran on 21.12.2014..
+ * Service that works in backgorund, it launches device scanning
+ * and recieves broadcast when device is scanned
  */
 public class ScaningService extends Service {
     private Thread mThread;
@@ -45,8 +43,9 @@ public class ScaningService extends Service {
         this.registerReceiver(new Reciever(), filter);
 
         //get mac adresses
-       // deviceList = getMacAdresses();
-        ///preko interfacea pokreni skeniranje
+        deviceList = getMacAdresses();
+
+        ///start scanning over the interface
         final OuterDevicesScan outerDevicesScan = new BLEScan();
         mThread = new Thread(new Runnable() {
             @Override
@@ -55,13 +54,10 @@ public class ScaningService extends Service {
             }
         });
         mThread.run();
-        ///analiziranje dohvaćenih podataka
-        //kreiranje notificationa
-        //pokretanje glavne aplikacije
     }
 
-    /*
-    Singletone pattern example
+    /**
+     * Singleton. No duplicate services.
      */
     public static ScaningService getInstance(){
         if(instance==null){
@@ -69,6 +65,7 @@ public class ScaningService extends Service {
         }
         return instance;
     }
+
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -79,10 +76,11 @@ public class ScaningService extends Service {
     }
 
     /**
-     * Get Mac addresses from local database
+     * Get Mac addresses from local database.
+     * MAC addresses are from devices that need to match.
      * @return list of mac addresses of devices from local database
      */
-    /*private List<String> getMacAdresses(){
+    private List<String> getMacAdresses(){
         Beacon mac=new Beacon();
         List<String> macs = new LinkedList<String>();
         for(Beacon i : mac.getMacAdresses()){
@@ -90,22 +88,27 @@ public class ScaningService extends Service {
         }
         return macs;
     }
-*/
+
+    /**
+     * Recieves broadcast that scanning class (currently BLEScan) sent.
+     * Then it launches notification launcher
+     */
     public static class Reciever extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Log.e("ScanningService", "RECIEVED BROADCAST!!!");
-
+            Log.e("ScanningService", "RECIEVED BROADCAST!");
+            //start activity/notification/...
             startAct(BaseApplication.getStaticCurrentContext());
         }
     }
 
+    /**
+     * Defines what action is performed on received broadcast signal.
+     * @param c application context
+     */
     public static void startAct(Context c) {
-            /*Intent dialogIntent = new Intent(c, LoginActivity.class);
-            dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            c.startActivity(dialogIntent);*/
-
+        //start notification launcher
         NotificationLauncher nl = new NotificationLauncher();
         nl.launchNotification(c);
     }
