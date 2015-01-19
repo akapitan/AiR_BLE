@@ -1,1 +1,1 @@
-Application code folder for Phase 2.
+This folder contains all application code for Phase 2.

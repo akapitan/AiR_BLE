@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SeierFriendApp</string>
+    <string name="title_section1">User info</string>
+    <string name="title_section2">Points status</string>
+    <string name="title_section3">Vouchers</string>
+    <string name="title_section4">BLE test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="txtTitle">SeierFriend</string>
+    <string name="txtUserName">username/email</string>
+    <string name="txtPassword">password</string>
+    <string name="btnSignIn">Sign in</string>
+    <string name="btnRegister">Register</string>
+    <string name="btnForgotPassword">Forgot password?</string>
+    <string name="txtPointsHeading">Seier Friends</string>
+    <string name="txtCurrentPoints">10.250</string>
+    <string name="txtPointsLabel">points</string>
+    <string name="txtFriendName">Marcus Bach</string>
+    <string name="txtFriendStatusLabel">Friend status: </string>
+    <string name="txtFriendStatus">Premium Friend</string>
+    <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
+    <string name="wsURI">"http://evodeployment.evolaris.net:9000/v1/status/"</string>
+    <string name="enter_tag_id">Enter tag ID</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="tag_label">It seems this is your first sign in. Please enter your Tag ID.</string>
+
+    <string-array name="nav_drawer_items">
+        <item >User info</item>
+        <item >Point status</item>
+        <item >Vouchers</item>
+        <item >Logout</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_photos</item>
+        <item>@drawable/ic_pages</item>
+        <item>@drawable/ic_home</item>
+    </array>
+
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+</resources>
