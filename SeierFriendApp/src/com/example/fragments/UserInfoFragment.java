@@ -34,12 +34,13 @@ public class UserInfoFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //select user from db
+        /*
         User u = new Select().from(User.class).where("authToken == ?", authToken).executeSingle();
         //set user data
-        TextView firstName = ((TextView) getView().findViewById(R.id.txtFirstName));
+        TextView firstName = ((TextView) getView().findViewById(R.id.txtFirstname));
         firstName.setText(u.getFirstName());
 
-        TextView lastName = ((TextView) getView().findViewById(R.id.txtLastName));
+        TextView lastName = ((TextView) getView().findViewById(R.id.txtLastname));
         lastName.setText(u.getLastName());
 
         TextView email = ((TextView) getView().findViewById(R.id.txtEmail));
@@ -50,5 +51,6 @@ public class UserInfoFragment extends Fragment {
 
         TextView lastCheckin = ((TextView) getView().findViewById(R.id.txtLastCheckin));
         lastCheckin.setText(String.valueOf(u.getLastCheckin()));
+        */
     }
 }

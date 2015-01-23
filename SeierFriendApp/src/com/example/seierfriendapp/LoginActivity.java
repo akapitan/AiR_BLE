@@ -113,7 +113,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                 // get data from server
                 getUserDataFromServer(userLogin, passLogin);
                 //check if users exists. TAG-ID!
-                //checkIfUserExists(userLogin, passLogin);
+                checkIfUserExists(userLogin, passLogin);
             }
         });
 
