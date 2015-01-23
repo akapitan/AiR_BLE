@@ -24,6 +24,7 @@
     <string name="txtFriendStatus">Premium Friend</string>
     <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
     <string name="wsURI">"http://evodeployment.evolaris.net:9000/v1/status/"</string>
+    <string name="loginURI">"http://evodeployment.evolaris.net:9000/v1/login/"</string>
     <string name="enter_tag_id">Enter tag ID</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>

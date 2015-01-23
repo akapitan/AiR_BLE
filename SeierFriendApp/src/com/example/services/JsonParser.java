@@ -6,11 +6,13 @@ import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -109,15 +111,30 @@ public class JsonParser {
                    inputStream = httpEntity.getContent();
 
 
-               }else if(params[1].toString() == "POST" || params[1].toString() == "post"){
+               }else if((params[1].toString() == "POST" || params[1].toString() == "post")){
 
                    HttpClient httpClient = new DefaultHttpClient();
+                   //get uri
                    HttpPost httpPost = new HttpPost(params[0].toString());
+                   // add parameters (if exist) in request header
+                   if(params[2] != null){
+                       ArrayList<NameValuePair> headerList = (ArrayList<NameValuePair>) params[3];
+                       //execute different post with ...
+                       if(headerList.get(2).getValue().toString().equals("login") ){
+                           httpPost.setHeader("Content-Type",
+                                   "application/x-www-form-urlencoded;charset=UTF-8");
+                           httpPost.addHeader(BasicScheme.authenticate(
+                                   new UsernamePasswordCredentials("website", "7z2EEWC4"),
+                                   "UTF-8", false));
+                           headerList.remove(2);
+                           httpPost.setEntity(new UrlEncodedFormEntity(headerList));
+                       }
+                   }else {
 
-                   List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-                   nameValuePairs.add(new BasicNameValuePair("method", params[1].toString()));
-                   httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8")); /////////
-
+                       List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                       nameValuePairs.add(new BasicNameValuePair("method", params[1].toString()));
+                       httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8")); /////////
+                   }
                    HttpResponse httpResponse = httpClient.execute(httpPost);
                    HttpEntity httpEntity = httpResponse.getEntity();
                    Log.d("Before post input stream","Lol");

@@ -113,7 +113,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                 // get data from server
                 getUserDataFromServer(userLogin, passLogin);
                 //check if users exists. TAG-ID!
-                checkIfUserExists(userLogin, passLogin);
+                //checkIfUserExists(userLogin, passLogin);
             }
         });
 
@@ -142,6 +142,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         if (dataIsCollected) {
             //get data from JsonParser class
             JSONObject jo = jsonParser.getJson();
+            Log.e("recieved data", jo.toString());
             try {
                 Toast.makeText(this, "MyActivity, data collected \n" +
                         "Name: " + jo.getString("id"), Toast.LENGTH_SHORT).show();
@@ -164,12 +165,14 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
     }
     public void getUserDataFromServer(String username, String password){
 
-        /*url = String.format(res.getString(R.string.loginURI));
+        Resources res = getResources();
+        url = String.format(res.getString(R.string.loginURI));
                 header = new ArrayList<NameValuePair>();
                 header.add(new BasicNameValuePair("Authorization", "Basic d2Vic2l0ZTo3ejJFRVdDNA=="));
                 postParams = new ArrayList<NameValuePair>();
                 postParams.add(new BasicNameValuePair("email", userLogin));
                 postParams.add(new BasicNameValuePair("password", passLogin));
+                postParams.add(new BasicNameValuePair("postType", "login"));
                 jsonParameters = new Object[]{
                         Uri.parse(url),
                         "post",
@@ -177,13 +180,12 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                         postParams
                 };
 
-                jsonParser.getData(jsonParameters);*/
+                jsonParser.getData(jsonParameters);
 
         //get user data from server
         //AUTHTOKEN CURRENTLY HARDCODED, LOGIN API DOESN'T WORK! CHANGE LATER!!!
-        Resources res = getResources();
         //get url from resources
-        url = String.format(res.getString(R.string.wsURI));
+       /* url = String.format(res.getString(R.string.wsURI));
 
         //create heaader for web api. Authorization + authtoken
         header = new ArrayList<NameValuePair>();
@@ -194,7 +196,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                 header
         };
 
-        jsonParser.getData(jsonParameters);
+        jsonParser.getData(jsonParameters);*/
     }
 
     /**
