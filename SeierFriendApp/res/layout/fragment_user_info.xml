@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/list_background">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:stretchColumns="1" android:background="@color/list_background" android:focusableInTouchMode="true"
+             android:focusable="true" android:gravity="center_vertical|start" android:id="@+id/tableInfo">
+    <TableRow android:layout_height="wrap_content">
+        <TextView
+                android:text="@string/firstNameLabel"
+                android:padding="10dip" android:background="@color/list_background" android:gravity="left|center_vertical|center_horizontal"
+                android:height="50dp" android:textColor="@color/list_background_pressed" android:textSize="16dp"
+                android:textStyle="bold" android:layout_height="70dp"/>
+        <TextView
+                android:gravity="center_vertical|start|center_horizontal"
+                android:padding="10dip" android:background="@color/list_background" android:height="50dp"
+                android:textColor="#000" android:textSize="16dp"
+                android:layout_height="70dp" android:paddingLeft="15dp" android:textStyle="normal"/>
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content">
+        <TextView
+                android:text="@string/lastNameLabel"
+                android:padding="10dip" android:background="@color/list_background" android:gravity="left|center_vertical|center_horizontal"
+                android:height="50dp" android:textColor="@color/list_background_pressed" android:textSize="16dp"
+                android:textStyle="bold" android:layout_height="70dp"/>
+        <TextView
+                android:gravity="center_vertical|start|center_horizontal"
+                android:padding="10dip" android:background="@color/list_background" android:height="50dp"
+                android:textColor="#000" android:textSize="16dp"
+                android:layout_height="70dp" android:paddingLeft="15dp" android:textStyle="normal"/>
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content">
+        <TextView
+                android:text="@string/emailLabel"
+                android:padding="10dip" android:background="@color/list_background" android:gravity="left|center_vertical|center_horizontal"
+                android:height="50dp" android:textColor="@color/list_background_pressed" android:textSize="16dp"
+                android:textStyle="bold" android:layout_height="70dp"/>
+        <TextView
+                android:gravity="center_vertical|start|center_horizontal"
+                android:padding="10dip" android:background="@color/list_background" android:height="50dp"
+                android:textColor="#000" android:textSize="16dp"
+                android:layout_height="70dp" android:paddingLeft="15dp" android:textStyle="normal"/>
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content">
+        <TextView
+                android:text="@string/pointsLabel"
+                android:padding="10dip" android:background="@color/list_background" android:gravity="left|center_vertical|center_horizontal"
+                android:height="50dp" android:textColor="@color/list_background_pressed" android:textSize="16dp"
+                android:textStyle="bold" android:layout_height="70dp"/>
+        <TextView
+                android:gravity="center_vertical|start|center_horizontal"
+                android:padding="10dip" android:background="@color/list_background" android:height="50dp"
+                android:textColor="#000" android:textSize="16dp"
+                android:layout_height="70dp" android:paddingLeft="15dp" android:textStyle="normal"/>
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content">
+        <TextView
+                android:text="@string/statusLabel"
+                android:padding="10dip" android:background="@color/list_background" android:gravity="left|center_vertical|center_horizontal"
+                android:height="50dp" android:textColor="@color/list_background_pressed" android:textSize="16dp"
+                android:textStyle="bold" android:layout_height="70dp"/>
+        <TextView
+                android:gravity="center_vertical|start|center_horizontal"
+                android:padding="10dip" android:background="@color/list_background" android:height="50dp"
+                android:textColor="#000" android:textSize="16dp"
+                android:layout_height="70dp" android:paddingLeft="15dp" android:textStyle="normal"/>
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content">
+        <TextView
+                android:text="@string/lastCheckinLabel"
+                android:padding="10dip" android:background="@color/list_background" android:gravity="left|center_vertical|center_horizontal"
+                android:height="50dp" android:textColor="@color/list_background_pressed" android:textSize="16dp"
+                android:textStyle="bold" android:layout_height="70dp"/>
+        <TextView
+                android:gravity="center_vertical|start|center_horizontal"
+                android:padding="10dip" android:background="@color/list_background" android:height="50dp"
+                android:textColor="#000" android:textSize="16dp"
+                android:layout_height="70dp" android:paddingLeft="15dp" android:textStyle="normal"/>
+    </TableRow>
+</TableLayout>
+</ScrollView>
