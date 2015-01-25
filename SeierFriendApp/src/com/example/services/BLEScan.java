@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.util.SparseArray;
+import com.example.core.BaseApplication;
+
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
     /**
      * Stop scanning for BLE devices (stop thread)
      */
-    private Runnable mStopRunnable=new Runnable() {
+    private Runnable mStopRunnable = new Runnable() {
         @Override
         public void run() {
             stopScan();
@@ -51,45 +53,46 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
         mHandler = new Handler();
         //start scanning
         mBluetoothAdapter.startLeScan(this);
-        mHandler.postDelayed(mStopRunnable, 9000);
+        mHandler.postDelayed(mStopRunnable, 7000);
     }
 
 
     /**
      * Method which stops scanning if wasn't stopped by mHandler in startScan method.
      */
-    private void stopScan(){
+    private void stopScan() {
         mBluetoothAdapter.stopLeScan(this);
     }
+
     // mechanism for making less broadcast events. Every fifth time that scanning service recognise device it will trigger broadcast event
     int j = 4;
+
     @Override
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
         j++;
         //check if any of MAC addresses match, Break after first match
-        for(String i : macAddreses ){
-            if(i.equals(device.getAddress().toString())){
-                Log.e("BLEScan","Device MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
+        for (String i : macAddreses) {
+            if (i.equals(device.getAddress().toString())) {
+                Log.e("BLEScan", "Device MATCH! " + device.getName() + " @ " + rssi + " MAC: " + device.getAddress().toString());
                 //put devices in sparsearray
-                mDevices.put(device.hashCode(),device);
+                mDevices.put(device.hashCode(), device);
                 //send broadcast
                 //just for slowing down broadcast events
-                if( j > 5) {
-                    j=0;
-                    Intent broadcastIntent = new Intent();
-                    broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
-                    applicationContext.sendBroadcast(broadcastIntent);
+                if (j > 5) {
+                    j = 0;
+                    NotifyOnScan();
                 }
                 break;
-            }else{
-                Log.e("BLEScan","Device NOT MATCH! "+device.getName()+" @ " + rssi + " MAC: " + device.getAddress().toString());
+            } else {
+                Log.e("BLEScan", "Device NOT MATCH! " + device.getName() + " @ " + rssi + " MAC: " + device.getAddress().toString());
             }
         }
     }
 
     /**
      * Starting device scan
-     * @param ctx Current application context
+     *
+     * @param ctx          Current application context
      * @param macAddresses Mac Addresses from local storage
      */
     @Override
@@ -98,12 +101,10 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
         startScan(ctx);
     }
 
-    /**
-     * Interface override.
-     * @return
-     */
     @Override
-    public SparseArray<BluetoothDevice> getDeviceList() {
-        return mDevices;
+    public void NotifyOnScan() {
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
+        applicationContext.sendBroadcast(broadcastIntent);
     }
 }

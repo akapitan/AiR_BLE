@@ -43,7 +43,7 @@ public class ScaningService extends Service {
         this.registerReceiver(new Reciever(), filter);
 
         //get mac adresses
-        //deviceList = getMacAdresses();
+        deviceList = getMacAdresses();
 
         ///start scanning over the interface
         final OuterDevicesScan outerDevicesScan = new BLEScan();

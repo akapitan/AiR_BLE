@@ -60,7 +60,7 @@ public class User extends Model {
                 Date lastCheckin, int pointsToday, String authToken)
     {
         super();
-        this.idUser = idUser;
+        this.idUser=idUser;
         this.s1member = s1member;
         this.employee = employee;
         this.salutation = salutation;
@@ -78,13 +78,15 @@ public class User extends Model {
         this.authToken = authToken;
     }
 
-    public long getIdUser() {
-        return idUser;
-    }
 
     public boolean isS1member() {
         return s1member;
     }
+
+    public long getIdUser() {
+        return idUser;
+    }
+
 
     public boolean isEmployee() {
         return employee;

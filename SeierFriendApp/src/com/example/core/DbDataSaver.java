@@ -23,7 +23,7 @@ public class DbDataSaver {
      * Save user credentials to local database. If user data exists,
      * update changes
      */
-    public void saveUserData(JSONObject jo, String pass, String authToken)
+    public void saveUserData(JSONObject jo, String pass, String authTokenn)
     {
         try {
             long idUser = Long.parseLong(jo.getString("id"));
@@ -35,6 +35,7 @@ public class DbDataSaver {
             String title = jo.getString("title").toString();
             String email = jo.getString("email").toString();
             String password = pass;
+            String authToken=authTokenn;
             int points = Integer.parseInt(jo.getString("points").toString());
             int pointsToday = Integer.parseInt(jo.getString("points_today"));
             Date birthdate = ConvertToDate(jo.getString("birthdate"));
@@ -50,12 +51,12 @@ public class DbDataSaver {
             User user;
             user = new User(idUser, s1member, employee, salutation, firstName, lastName, title, birthdate, email,
                     password, points, level, checkins, lastCheckin, pointsToday, authToken);
-
+            //user.save();
             user.saveUser(user);
-            Log.d("DB-SAVED", user.getEmail().toString() + " - " + user.getLastCheckin().toString());
+            Log.e("DB-SAVED", user + " - " + user.authToken().toString());
         } catch (JSONException e){
             e.printStackTrace();
-            Log.d("DB-NOTSAVED", "not saved");
+            Log.e("DB-NOTSAVED", "not saved");
         }
     }
 
