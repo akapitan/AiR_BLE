@@ -85,6 +85,7 @@ public class ScaningService extends Service {
         List<String> macs = new LinkedList<String>();
         for(Beacon i : mac.getMacAdresses()){
             macs.add(i.getMac());
+            Log.e("MAC ADDRESS", i.getMac().toString());
         }
         return macs;
     }

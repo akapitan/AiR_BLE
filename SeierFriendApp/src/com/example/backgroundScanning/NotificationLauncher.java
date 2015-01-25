@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v4.app.NotificationCompat;
 import com.example.localdata.Notification;
 import com.example.seierfriendapp.LoginActivity;
@@ -33,11 +34,12 @@ public class NotificationLauncher {
         //check if there is user that is logged in
             //TO DO!
 
+
+
         //create notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context).
-                setSmallIcon(R.drawable.ic_launcher).setContentTitle("SeierFriend").
-                setContentText("Welcome! You've checked in. Claim your points now.");
-
+                setSmallIcon(R.drawable.ic_launcher).setContentTitle(context.getResources().getString(R.string.notificationTitle)).
+                setContentText(context.getResources().getString(R.string.notificationMessage));
         //login activity intent
         Intent dialogIntent = new Intent(context, LoginActivity.class);
         //extras for check in recognition, used in loginActivity

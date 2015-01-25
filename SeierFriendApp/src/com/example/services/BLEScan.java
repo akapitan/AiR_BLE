@@ -53,7 +53,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
         mHandler = new Handler();
         //start scanning
         mBluetoothAdapter.startLeScan(this);
-        mHandler.postDelayed(mStopRunnable, 7000);
+        mHandler.postDelayed(mStopRunnable, 10000);
     }
 
 
@@ -85,6 +85,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                 break;
             } else {
                 Log.e("BLEScan", "Device NOT MATCH! " + device.getName() + " @ " + rssi + " MAC: " + device.getAddress().toString());
+
             }
         }
     }
