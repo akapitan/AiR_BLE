@@ -33,7 +33,7 @@ public class BaseApplication extends Application {
         ActiveAndroid.initialize(this);
 
         //Save device mac to local db
-        //saveMac();
+        saveMac();
     }
 
     /**

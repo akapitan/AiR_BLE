@@ -10,14 +10,14 @@ import com.activeandroid.annotation.Table;
 
 @Table(name="Login")
 public class Login extends Model {
-    @Column(name="idLogin")
-    private long idLogin;
     @Column(name = "email")
     private String email;
     @Column(name="password")
     private String password;
-    @Column(name="TAGID")
-    private String TAGID;
+    @Column(name="authorization_token")
+    private String authorization_token;
+    @Column(name="participant_id")
+    private String participant_id;
     @Column(name="loggedIn")
     private boolean loggedIn;
 
@@ -25,25 +25,24 @@ public class Login extends Model {
         super();
     }
 
-    public Login(long idLogin, String email, String TAGID, String password, boolean loggedIn){
-        super();
-        this.idLogin=idLogin;
-        this.email=email;
-        this.password = password;
-        this.TAGID=TAGID;
-        this.loggedIn=loggedIn;
+    public String getAuthorization_token() {
+        return authorization_token;
     }
 
-    public long getIdLogin() {
-        return idLogin;
+    public void setAuthorization_token(String authorization_token) {
+        this.authorization_token = authorization_token;
+    }
+
+    public String getParticipant_id() {
+        return participant_id;
+    }
+
+    public void setParticipant_id(String participant_id) {
+        this.participant_id = participant_id;
     }
 
     public String getEmail() {
         return email;
-    }
-
-    public String getTAGID() {
-        return TAGID;
     }
 
     public String getPassword() {
@@ -54,16 +53,8 @@ public class Login extends Model {
         return loggedIn;
     }
 
-    public void setIdLogin(long idLogin) {
-        this.idLogin = idLogin;
-    }
-
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setTAGID(String TAGID) {
-        this.TAGID = TAGID;
     }
 
     public void setLoggedIn(boolean loggedIn) {
