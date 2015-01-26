@@ -15,7 +15,8 @@ import java.util.List;
 /**
  * Created by goran on 1.12.2014..
  */
-public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesScan {
+@SuppressWarnings("deprecation")
+public class BLEScan extends DeviceScanner implements BluetoothAdapter.LeScanCallback {
 
     private BluetoothAdapter mBluetoothAdapter;
     public BluetoothManager manager;
@@ -60,7 +61,8 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
     /**
      * Method which stops scanning if wasn't stopped by mHandler in startScan method.
      */
-    private void stopScan() {
+    @Override
+    public void stopScan() {
         mBluetoothAdapter.stopLeScan(this);
     }
 
@@ -80,7 +82,7 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
                 //just for slowing down broadcast events
                 if (j > 5) {
                     j = 0;
-                    NotifyOnScan();
+                    this.notifyOnScan(applicationContext);
                 }
                 break;
             } else {
@@ -102,10 +104,4 @@ public class BLEScan implements BluetoothAdapter.LeScanCallback, OuterDevicesSca
         startScan(ctx);
     }
 
-    @Override
-    public void NotifyOnScan() {
-        Intent broadcastIntent = new Intent();
-        broadcastIntent.setAction("com.example.action.DEVICE_SCANNED");
-        applicationContext.sendBroadcast(broadcastIntent);
-    }
 }
