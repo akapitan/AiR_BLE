@@ -23,6 +23,15 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/main_background</item>
     </style>
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:alertDialogStyle">@style/SeierFriendDialogStyle</item>
+        <item name="android:textColorPrimary">#444444</item>
+    </style>
+
+    <style name="SeierFriendDialogStyle">
+        <item name="android:bottomBright">@color/list_background_pressed</item>
+        <item name="android:divider">@color/list_background_pressed</item>
+    </style>
     <!-- Application theme.
     <style name="AppTheme" parent="AppBaseTheme">
          All customizations that are NOT specific to a particular API-level can go here.

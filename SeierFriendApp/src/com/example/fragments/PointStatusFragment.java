@@ -52,10 +52,10 @@ public class PointStatusFragment extends Fragment {
 
         TextView friendStatus=((TextView) getView().findViewById(R.id.txtFriendStatus));
         if(u.getPoints()>0 && u.getPoints()<800)
-            friendStatus.setText("Basic friend");
+            friendStatus.setText(getResources().getString(R.string.friendStatus1));
         if(u.getPoints()>800 && u.getPoints()<1200)
-            friendStatus.setText("Top friend");
+            friendStatus.setText(getResources().getString(R.string.friendStatus2));
         if(u.getPoints()>1200 )
-            friendStatus.setText("Top friend");
+            friendStatus.setText(getResources().getString(R.string.friendStatus3));
     }
 }

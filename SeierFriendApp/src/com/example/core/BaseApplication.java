@@ -66,11 +66,11 @@ public class BaseApplication extends Application {
      */
     public void saveMac(){
         Beacon beacon = new Beacon();
-        beacon.setMac("FE:0F:91:39:CF:90");
+        beacon.setMac("CA:49:04:D5:B8:6C");
         beacon.save();
 
         Beacon beacon1 = new Beacon();
-        beacon1.setMac("FE:0F:91:39:CF:88");
+        beacon1.setMac("FC:50:EC:C9:AF:98");
         beacon1.save();
     }
 }

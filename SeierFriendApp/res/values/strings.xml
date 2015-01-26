@@ -29,6 +29,13 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="tag_label">It seems this is your first sign in. Please enter your Tag ID.</string>
+    <string name="loginProgressDialogTitle">Loading</string>
+    <string name="loginProgressDialogMessage">Please wait...</string>
+    <string name="friendStatus1">Basic friend</string>
+    <string name="friendStatus2">Top friend</string>
+    <string name="friendStatus3">Premium friend</string>
+    <string name="notificationTitle">SeierFriend</string>
+    <string name="notificationMessage">Welcome! You\'ve checked in. Claim your points now.</string>
 
     <string-array name="nav_drawer_items">
         <item >User info</item>
