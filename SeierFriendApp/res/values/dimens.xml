@@ -10,4 +10,6 @@
     -->
     <dimen name="navigation_drawer_width">240dp</dimen>
 
+    <dimen name="list_item_height">100dp</dimen>
+
 </resources>

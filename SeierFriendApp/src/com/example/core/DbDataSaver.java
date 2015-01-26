@@ -2,6 +2,7 @@ package com.example.core;
 
 import android.util.Log;
 import com.example.localdata.User;
+import com.example.localdata.Voucher;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,13 +57,48 @@ public class DbDataSaver {
             Log.e("DB-SAVED", user + " - " + user.authToken().toString());
         } catch (JSONException e){
             e.printStackTrace();
-            Log.e("DB-NOTSAVED", "not saved");
+            Log.e("DB-NOT_SAVED", "not saved");
         }
     }
 
     public void saveVoucherData(JSONObject jo)
     {
+        try {
+            long idVoucher = Long.parseLong(jo.getString("id"));
+            String name = jo.getString("name").toString();
+            int type = Integer.parseInt(jo.getString("type"));
+            String description = jo.getString("description").toString();
+            boolean redeemable = Boolean.parseBoolean(jo.getString("redeemable"));
+            String imageUrl = jo.getString("image_url").toString();
+            String voucherTitle = jo.getString("voucher_title").toString();
+            String voucherTerms = jo.getString("voucher_terms").toString();
+            String voucherLogoUrl = jo.getString("voucher_logo_url").toString();
+            String voucherImageUrl = jo.getString("voucher_image_url").toString();
+            int voucherEan = Integer.parseInt(jo.getString("voucher_ean"));
+            String voucherStoreName = jo.getString("voucher_store_name").toString();
+            String voucherStoreLocation = jo.getString("voucher_store_location").toString();
+            String voucherValidUntil = jo.getString("voucher_valid_until").toString();
+            String voucherDiscountStampUrl = jo.getString("voucher_discount_stamp_url").toString();
+            int validFor = Integer.parseInt(jo.getString("valid_for"));
+            Date validFrom = ConvertToDate(jo.getString("valid_from"));
+            Date validUntil = ConvertToDate(jo.getString("valid_until"));
+            boolean multipleRedeemable = Boolean.parseBoolean(jo.getString("multiple_redeemable"));
+            int vestingPeriod = Integer.parseInt(jo.getString("vesting_period"));
+            int nonRedeemableReason = Integer.parseInt(jo.getString("non_redeemable_reason"));
 
+
+
+            Voucher voucher;
+            voucher = new Voucher(idVoucher, type, name, description, redeemable, imageUrl, voucherTitle, voucherTerms,
+                    voucherLogoUrl, voucherImageUrl, voucherEan, voucherStoreName, voucherStoreLocation, voucherValidUntil,
+                    voucherDiscountStampUrl, validFor, validFrom, validUntil, multipleRedeemable, vestingPeriod, nonRedeemableReason);
+
+            voucher.saveVoucher(voucher);
+            Log.e("VOUCHER DB-SAVED", voucher + " - " + voucher.getName().toString());
+        } catch (JSONException e){
+            e.printStackTrace();
+            Log.e("VOUCHER DB-NOT_SAVED", "not saved");
+        }
     }
 
 }

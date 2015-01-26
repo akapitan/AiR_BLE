@@ -1,8 +1,10 @@
 package com.example.localdata;
 
+import android.util.Log;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 import java.util.Date;
 
@@ -20,8 +22,8 @@ public class Voucher extends Model {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "reedemable")
-    private boolean reedemable;
+    @Column(name = "redeemable")
+    private boolean redeemable;
     @Column(name = "imageUrl")
     private String imageUrl;
     @Column(name = "voucherTitle")
@@ -60,7 +62,7 @@ public class Voucher extends Model {
     }
 
     public Voucher(long idVoucher, int type, String name, String description,
-                   boolean reedemable, String imageUrl, String voucherTitle,
+                   boolean redeemable, String imageUrl, String voucherTitle,
                    String voucherTerms, String voucherLogoUrl, String voucherImageUrl,
                    int voucherEan, String voucherStoreName, String voucherStoreLocation,
                    String voucherValidUntil, String voucherDiscountStampUrl,
@@ -73,7 +75,7 @@ public class Voucher extends Model {
         this.type = type;
         this.name = name;
         this.description = description;
-        this.reedemable = reedemable;
+        this.redeemable = redeemable;
         this.imageUrl = imageUrl;
         this.voucherTitle = voucherTitle;
         this.voucherTerms = voucherTerms;
@@ -108,8 +110,8 @@ public class Voucher extends Model {
         return description;
     }
 
-    public boolean isReedemable() {
-        return reedemable;
+    public boolean isRedeemable() {
+        return redeemable;
     }
 
     public String getImageUrl() {
@@ -174,5 +176,21 @@ public class Voucher extends Model {
 
     public int getNonRedeemableReason() {
         return nonRedeemableReason;
+    }
+
+    public void saveVoucher(Voucher voucher) {
+        try {
+            Voucher select = new Select().from(Voucher.class)
+                    .where("name = ? AND idVoucher = ?", voucher.getName(), voucher.getIdVoucher())
+                    .executeSingle();
+            if (select != null) {
+                Log.d("VOUCHER ALREADY IN DB", select.name + " - " + select.type);
+            } else {
+                voucher.save();
+                Log.d("NEW VOUCHER ", voucher.name + " - " + voucher.type);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

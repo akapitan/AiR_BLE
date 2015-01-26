@@ -1,27 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="horizontal" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:padding="6dip" >
 
     <ImageView
-            android:id="@+id/flag"
+            android:id="@+id/voucher_icon"
             android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="6dip"
+            android:contentDescription="Voucher icon"
+            android:src="@drawable/ic_voucher" />
+        
+
+    <TextView
+            android:id="@+id/voucher_name"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:src="@drawable/ic_voucher"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp" />
+            android:layout_alignWithParentIfMissing="true"
+            android:gravity="center_vertical"
+            android:text="Voucher name"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/list_divider"
+            android:layout_alignTop="@+id/voucher_icon" android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/voucher_icon" android:layout_above="@+id/voucher_store"/>
+
+    <TextView
+            android:id="@+id/voucher_store"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="Store"
+            android:textSize="12sp"
+            android:layout_above="@+id/voucher_to" android:layout_alignStart="@+id/voucher_name"/>
+
+    <TextView android:id="@+id/voucher_to"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:singleLine="true"
+              android:text="To"
+              android:textSize="12sp"
+              android:layout_toEndOf="@+id/voucher_icon" android:layout_alignParentBottom="true"/>
 
 
-        <TextView
-                android:id="@+id/txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|left"
-                android:gravity="center"
-                android:textSize="18dp" />
-
-
-</LinearLayout>
+</RelativeLayout>

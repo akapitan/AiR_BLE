@@ -22,6 +22,12 @@ public interface OuterDevicesScan {
 
     /**
      * Method that notifies Application on device match.
+     * @param applicationContext current aplication context
      */
-    public void NotifyOnScan();
+    public void notifyOnScan(Context applicationContext);
+
+    /**
+     * Method that is used for stopping the scan
+     */
+    public void stopScan();
 }

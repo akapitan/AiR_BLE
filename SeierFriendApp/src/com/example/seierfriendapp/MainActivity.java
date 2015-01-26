@@ -1,14 +1,13 @@
 package com.example.seierfriendapp;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
@@ -20,14 +19,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import com.activeandroid.query.Select;
+import android.widget.Toast;
 import com.example.core.BaseApplication;
+import com.example.core.DbDataSaver;
 import com.example.fragments.*;
-import com.example.localdata.Login;
-import com.example.services.BLEScan;
-import com.example.services.OuterDevicesScan;
+import com.example.services.DataCollectedListener;
+import com.example.services.JsonParser;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements DataCollectedListener{
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -46,6 +50,11 @@ public class MainActivity extends FragmentActivity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+
+	JsonParser jsonParser;
+	ArrayList<NameValuePair> header;
+	Object[] jsonParameters;
+	String url;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +128,44 @@ public class MainActivity extends FragmentActivity {
 		//IMPORTANT!!! -> set current context
 		baseApp = (BaseApplication) getApplication();
 		baseApp.setCurrentContext(this);
+
+		jsonParser = new JsonParser(getApplicationContext());
+		jsonParser.setDataCollectedListener(this);
+
+		Resources res = getResources();
+
+		url = String.format(res.getString(R.string.voucherURI));
+		header = new ArrayList<NameValuePair>();
+		header.add(new BasicNameValuePair("Authorization", LoginActivity.authToken));
+		jsonParameters = new Object[]{
+				Uri.parse(url),
+				"get",
+				header,
+				null,
+				"array"
+		};
+		jsonParser.getData(jsonParameters);
+	}
+
+	@Override
+	public void DataCollected(boolean dataIsCollected, boolean errors, String errorMessage) {
+		if(dataIsCollected){
+			JSONArray jsonArray = jsonParser.getJsonArray();
+			DbDataSaver dbSaver = new DbDataSaver();
+			Log.e("VOUCHER SUCCESS: ", "OK");
+			for(int i = 0; i<jsonArray.length(); i++){
+				JSONObject jo = null;
+				try {
+					jo = jsonArray.getJSONObject(i);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				dbSaver.saveVoucherData(jo);
+			}
+		}else{
+			Toast.makeText(this, "Please check your Internet connection:\n\n" + errorMessage, Toast.LENGTH_LONG).show();
+			Log.e("VOUCHER ERROR: ", errorMessage);
+		}
 	}
 
 	/**

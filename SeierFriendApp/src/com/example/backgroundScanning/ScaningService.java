@@ -46,11 +46,11 @@ public class ScaningService extends Service {
         deviceList = getMacAdresses();
 
         ///start scanning over the interface
-        final OuterDevicesScan outerDevicesScan = new BLEScan();
+        final OuterDevicesScan outerDevicesScan1 = new BLEScan();
         mThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                outerDevicesScan.scanForDevices(getBaseContext(), deviceList);
+                outerDevicesScan1.scanForDevices(getBaseContext(), deviceList);
             }
         });
         mThread.run();
