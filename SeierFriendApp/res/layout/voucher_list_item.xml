@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="?android:attr/listPreferredItemHeight"
                 android:padding="6dip" >
@@ -14,15 +14,37 @@
             android:src="@drawable/ic_voucher" />
 
     <TextView
-            android:id="@+id/voucher_name"
+            android:id="@+id/voucher_details"
             android:layout_width="fill_parent"
             android:layout_height="26dip"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/voucher_icon"
             android:ellipsize="marquee"
             android:singleLine="true"
-            android:text="Voucher name"
-            android:textSize="12sp" />
+            android:text="Description"
+            android:textSize="12sp" android:layout_alignStart="@+id/voucher_name"/>
 
-</LinearLayout>
+    <TextView
+            android:id="@+id/voucher_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/voucher_details"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignWithParentIfMissing="true"
+            android:gravity="center_vertical"
+            android:text="Voucher name"
+            android:textSize="16sp" android:layout_toEndOf="@+id/voucher_icon"/>
+
+    <TextView
+            android:id="@+id/voucher_store"
+            android:layout_width="fill_parent"
+            android:layout_height="26dip"
+            android:layout_alignParentRight="true"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="Store"
+            android:textSize="12sp" android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/voucher_details"/>
+
+</RelativeLayout>

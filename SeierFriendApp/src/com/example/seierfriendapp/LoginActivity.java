@@ -250,7 +250,8 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                 Uri.parse(url),
                 "post",
                 header,
-                postParams
+                postParams,
+                null
         };
         jsonParser.getData(jsonParameters);
     }
@@ -265,7 +266,9 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         jsonParameters = new Object[]{
                 Uri.parse(url),
                 "get",
-                header
+                header,
+                null,
+                null
         };
         jsonParser.getData(jsonParameters);
     }
@@ -276,6 +279,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         jsonParameters = new Object[]{
                 Uri.parse(url),
                 "post",
+                null,
                 null,
                 null
         };

@@ -1,12 +1,17 @@
 package com.example.fragments;
 
 import android.app.ListFragment;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
+import com.activeandroid.query.Select;
+import com.example.localdata.Voucher;
 import com.example.seierfriendapp.R;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,39 +19,72 @@ import java.util.List;
 
 
 public class VoucherFragment extends ListFragment {
-
-    // Array of strings storing country names
-    String[]  discounts = new String[] {
-            "Discount 1",
-            "Discount 2",
-            "Discount 3",
-            "Discount 4",
-            "Discount 5",
-            "Discount 6",
-            "Discount 7",
-            "Discount 7",
-            "Discount 8",
-            "Discount 9"
-    };
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        boolean queryOk = false;
+        List<Voucher> vouchers = null;
+        Resources res = getResources();
 
-        // Each row in the list stores country name, currency and flag
+
+        //load data from local db
+
+        /*
+        * Load vouchers based on user level
+        * - strange behaviour -
+        **/
+
+        /*
+        String queryLimit;
+        User user = new Select().from(User.class).where("authToken = ?", LoginActivity.authToken).executeSingle();
+        Log.e("USER LEVEL ", String.valueOf(user.getLevel()));
+
+        switch(user.getLevel()){
+            case 1:
+                queryLimit = "validFor = 1";
+                break;
+            case 2:
+                queryLimit = "validFor = 1 OR validFor = 2";
+                break;
+            case 3:
+                queryLimit = "validFor = 1 OR validFor = 2 OR validFor = 3";
+                break;
+            default:
+                queryLimit = "validFor = 0";
+        }
+        Log.e("QUERA LIMIT ", queryLimit);
+        */
+
+        try {
+            //vouchers = new Select().all().from(Voucher.class).where(queryLimit).execute();
+            vouchers = new Select().all().from(Voucher.class).execute();
+            queryOk = true;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        if (vouchers.size() > 0 && queryOk == true) {
+            Log.d("VOCHERS LIST: ", vouchers.toString());
+            vouchers = (ArrayList<Voucher>) vouchers;
+        } else if (vouchers.size() == 0 && queryOk == true) {
+            Log.d("VOUCHERS: ", "no vouchers in local database");
+        }
+
+        //Each row in the list stores country name, currency and flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
-        for(int i=0;i<10;i++){
+        for(Voucher v : vouchers)
+        {
             HashMap<String, String> hm = new HashMap<String,String>();
-            hm.put("txt", discounts[i]);
+            hm.put("voucher_name", v.getName());
+            hm.put("voucher_store", res.getString(R.string.label_voucher_store)+ " " + v.getVoucherStoreName());
+            hm.put("voucher_to", res.getString(R.string.label_voucher_to)+ " "+ v.getVoucherValidUntil());
             aList.add(hm);
         }
 
         // Keys used in Hashmap
-        String[] from = { "txt" };
+        String[] from = { "voucher_name", "voucher_store", "voucher_to" };
 
         // Ids of views in listview_layout
-        int[] to = { R.id.txt};
+        int[] to = { R.id.voucher_name, R.id.voucher_store, R.id.voucher_to };
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
@@ -57,3 +95,5 @@ public class VoucherFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 }
+
+

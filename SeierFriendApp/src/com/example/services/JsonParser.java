@@ -15,6 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +33,7 @@ public class JsonParser {
     private DataCollectedListener dataCollectedListener;
     static InputStream inputStream = null;
     static JSONObject jsonObject = null;
+    static JSONArray jsonArray = null;
     static String json = "";
 
     boolean gettingJsonStatus = false;
@@ -68,6 +70,14 @@ public class JsonParser {
      */
     public JSONObject getJson(){
         return jsonObject;
+    }
+
+    /**
+     * Getter for Data from web service.
+     * @return
+     */
+    public JSONArray getJsonArray(){
+        return jsonArray;
     }
 
     /**
@@ -184,9 +194,13 @@ public class JsonParser {
 
             //try to put it into json object
             try{
-                jsonObject = new JSONObject(json);
-                gettingJsonStatus = true;
-
+                if( params[4] != null && params[4].toString() == "array"){
+                    jsonArray = new JSONArray(json);
+                    gettingJsonStatus = true;
+                }else {
+                    jsonObject = new JSONObject(json);
+                    gettingJsonStatus = true;
+                }
             } catch (JSONException e) {
                 Log.e("JSON parsing", e.toString());
                 e.printStackTrace();

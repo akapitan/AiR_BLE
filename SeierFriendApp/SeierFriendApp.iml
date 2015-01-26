@@ -36,5 +36,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="android-support-v4" level="project" />
     <orderEntry type="library" name="ActiveAndroid" level="project" />
+    <orderEntry type="library" name="picasso-2.4.0" level="project" />
   </component>
 </module>
