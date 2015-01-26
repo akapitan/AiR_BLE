@@ -11,7 +11,6 @@ import com.activeandroid.query.Select;
 import com.example.core.BaseApplication;
 import com.example.localdata.Login;
 import com.example.seierfriendapp.LoginActivity;
-import com.example.seierfriendapp.R;
 
 /**
  * Created by matha on 25.01.15..

@@ -25,6 +25,7 @@
     <string name="uriRegister">"http://www.shoppingcityseiersberg.at/de/registrieren.php"</string>
     <string name="wsURI">"http://evodeployment.evolaris.net:9000/v1/status/"</string>
     <string name="loginURI">"http://evodeployment.evolaris.net:9000/v1/login/"</string>
+    <string name="checkInURI">"http://evodeployment.evolaris.net:9000/v1/check-in/"</string>
     <string name="enter_tag_id">Enter tag ID</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
@@ -36,6 +37,8 @@
     <string name="friendStatus3">Premium friend</string>
     <string name="notificationTitle">SeierFriend</string>
     <string name="notificationMessage">Welcome! You\'ve checked in. Claim your points now.</string>
+    <string name="wrongTagId">Please enter valid TagId</string>
+    <string name="wrongUsernameAndPass">Please enter valid username and password.</string>
 
     <string-array name="nav_drawer_items">
         <item >User info</item>

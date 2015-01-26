@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.util.SparseArray;
-import com.example.core.BaseApplication;
 
 import java.util.List;
 
