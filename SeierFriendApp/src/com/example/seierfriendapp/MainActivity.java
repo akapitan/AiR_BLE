@@ -1,12 +1,9 @@
 package com.example.seierfriendapp;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -20,12 +17,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import com.activeandroid.query.Select;
 import com.example.core.BaseApplication;
 import com.example.fragments.*;
-import com.example.localdata.Login;
-import com.example.services.BLEScan;
-import com.example.services.OuterDevicesScan;
 
 public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;

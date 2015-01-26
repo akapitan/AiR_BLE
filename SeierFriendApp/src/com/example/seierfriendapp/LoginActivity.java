@@ -52,6 +52,9 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
     CustomDialog progressDialog;
     Resources res;
     String tagId;
+    boolean startedFromNotification;
+    Login loggedUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +114,23 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         //Check if started from notification
         try {
             if (getIntent().getExtras().getString("checkIn") != null && getIntent().getExtras().getString("checkIn").equals("checkIn")) {
-                //TO DO: start checkin!
-
-                Log.e("STARTED FROM INTENT!", getIntent().getExtras().getString("checkIn").toString());
+                if (checkIfUserIsLoggedIn()) {
+                    startedFromNotification = true;
+                    Log.e("STARTED FROM INTENT!", getIntent().getExtras().getString("checkIn").toString());
+                    try {
+                        Login TagID = new Select().from(Login.class).where("email == ?", loggedUser.getEmail()).executeSingle();
+                        Log.e("ENTERED TAGID ", TagID.getTag_id().toString());
+                        //userCheckIn(TagID.getTag_id().toString()); //From database
+                        userCheckIn("b5f21f01-6b09-11e4-9def-005056a11f87");
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Please enter valid TagId " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Please login.", Toast.LENGTH_LONG).show();
+                }
             }
         } catch (Exception e) {
-            Log.e("Not started from intent","");
+            Log.e("Not started from intent", "");
         }
 
         /// test if user is logged in
@@ -127,15 +141,22 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         // check if started from logout
         try {
             if (getIntent().getExtras().getString("logout") != null && getIntent().getExtras().getString("logout").equals("logout")) {
-
                 Log.e("Started from logout", getIntent().getExtras().getString("logout").toString());
                 progressDialog.dismiss();
             }
         } catch (Exception e) {
-            checkIfUserIsLoggedIn();
+            if (checkIfUserIsLoggedIn()) {
+                this.username.setText(loggedUser.getEmail());
+                this.password.setText(loggedUser.getPassword());
+                getUserLoginDataFromServer(loggedUser.getEmail(), loggedUser.getPassword());
+            }
         }
 
-
+        if (checkIfUserIsLoggedIn()) {
+            this.username.setText(loggedUser.getEmail());
+            this.password.setText(loggedUser.getPassword());
+            getUserLoginDataFromServer(loggedUser.getEmail(), loggedUser.getPassword());
+        }
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,43 +168,13 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
                 //if there is no user/tag of user
                 tagId = checkForTagId(userLogin);
-                if(tagId == null){
+                if (tagId == null) {
                     //showTagIdDialogFragment();
-
-                    AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
-
-                    alert.setMessage(getResources().getString(R.string.tag_label));
-
-                    final EditText etTagId = new EditText(LoginActivity.this);
-                    etTagId.setInputType(InputType.TYPE_CLASS_TEXT);
-                    etTagId.setHint(getResources().getString(R.string.enter_tag_id));
-
-                    alert.setView(etTagId);
-
-                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.e("Entered TagID", etTagId.getText().toString());
-                            tagId = etTagId.getText().toString();
-                            getUserLoginDataFromServer(userLogin, passLogin);
-                        }
-                    });
-
-                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            progressDialog.dismiss();
-                        }
-                    });
-
-                    alert.show();
-
-                }else{
+                    alertDialog(getResources().getString(R.string.enter_tag_id));
+                } else {
                     // get data from server
                     getUserLoginDataFromServer(userLogin, passLogin);
                 }
-
-
             }
         });
 
@@ -217,13 +208,20 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
             try {
                 if (login == true) {
-
+                    startedFromNotification = false;
                     saveLogin(jo.getString("authorization_token").toString(), jo.getString("participant_id").toString(), userLogin, passLogin, true, tagId);
                     authToken = jo.getString("authorization_token").toString();
                     Log.e("AUTH TOKEN LOGIN -> ", authToken);
-                    ////////////////////////////////checkIfUserExists(userLogin, passLogin);
                     getUserStatusDataFromServer(authToken);
+
+                } else if (startedFromNotification == true) {
+                    startedFromNotification = false;
+                    progressDialog.dismiss();
+                    login = false;
+                    getUserStatusDataFromServer(authToken);
+                    //startMainActivity();
                 } else {
+                    startedFromNotification = false;
                     DbDataSaver dbSaver = new DbDataSaver();
                     dbSaver.saveUserData(jo, passLogin, authToken);
                     //everything ok. Start main act.
@@ -233,9 +231,8 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         } else {
-            Toast.makeText(this, "MyActivity, data is not collected because:\n\n" + errorMessage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.wrongUsernameAndPass), Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
         }
     }
@@ -273,6 +270,18 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         jsonParser.getData(jsonParameters);
     }
 
+    public void userCheckIn(String TagId) {
+        Resources res = getResources();
+        url = String.format(res.getString(R.string.checkInURI) + TagId);
+        jsonParameters = new Object[]{
+                Uri.parse(url),
+                "post",
+                null,
+                null
+        };
+        jsonParser.getData(jsonParameters);
+    }
+
     /**
      * Save successful login. Used later for auto login.
      *
@@ -291,7 +300,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
             } else {
                 login = loggedUser;
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             login = new Login();
         }
@@ -302,63 +311,85 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         login.setPassword(password);
         login.setLoggedIn(loggedIn);
         login.setTag_id(tagId);
-        Log.e("SaveLogin","User saved with loggedIn = "+athorization_token + " "+participant_id+" "+email+" "+password+" "+loggedIn);
+        Log.e("SaveLogin", "User saved with loggedIn = " + athorization_token + " " + participant_id + " " + email + " " + password + " " + loggedIn);
         login.save();
-
     }
 
     /**
      * Method that checks if user is logged in.
      */
-    public void checkIfUserIsLoggedIn() {
+    public boolean checkIfUserIsLoggedIn() {
         //Select from db. Check if there is logged in = true (Existing user logged in)
         try {
-            Login loggedUser = new Select().from(Login.class).where("loggedIn == ?", true).executeSingle();
-            Log.e("LoggedUser", loggedUser.getEmail() + " " + loggedUser.getPassword()+" TAGID: "+loggedUser.getTag_id());
-            if(loggedUser.getEmail() == null || loggedUser.getPassword() == null){
+            loggedUser = new Select().from(Login.class).where("loggedIn == ?", true).executeSingle();
+            Log.e("LoggedUser", loggedUser.getEmail() + " " + loggedUser.getPassword() + " TAGID: " + loggedUser.getTag_id());
+            if (loggedUser.getEmail() == null || loggedUser.getPassword() == null) {
                 progressDialog.dismiss();
+                return false;
 
-            }else {
-                this.username.setText(loggedUser.getEmail());
-                this.password.setText(loggedUser.getPassword());
-                getUserLoginDataFromServer(loggedUser.getEmail(), loggedUser.getPassword());
+            } else {
+                return true;
             }
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             //no existing user show username and password
-            Log.e("CheckIfUserExists","User does not exists!");
+            Log.e("CheckIfUserExists", "User does not exists!");
             progressDialog.dismiss();
+            return false;
         }
     }
 
     /**
      * Method that starts main activity
      */
-    public void startMainActivity(){
+    public void startMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-
     /**
      * Checks if user exists and returns his tagID
+     *
      * @return
      */
-    public String checkForTagId(String email){
+    public String checkForTagId(String email) {
         String tagId = "";
         try {
             Login user = new Select().from(Login.class).where("email == ?", email).executeSingle();
-            if(user.getEmail() != null){
+            if (user.getEmail() != null) {
                 tagId = user.getTag_id();
-            }else{
+            } else {
                 tagId = null;
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             tagId = null;
         }
         return tagId;
     }
 
+    public void alertDialog(String title) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
+        alert.setMessage(title);
+        final EditText etTagId = new EditText(LoginActivity.this);
+        etTagId.setInputType(InputType.TYPE_CLASS_TEXT);
+        etTagId.setHint(getResources().getString(R.string.enter_tag_id));
+        alert.setView(etTagId);
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.e("Entered TagID", etTagId.getText().toString());
+                tagId = etTagId.getText().toString();
+                getUserLoginDataFromServer(userLogin, passLogin);
+            }
+        });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                progressDialog.dismiss();
+            }
+        });
+        alert.show();
+    }
 
     /*
     * Custom dialog

@@ -118,6 +118,7 @@ public class JsonParser {
                    HttpPost httpPost = new HttpPost(params[0].toString());
                    // add parameters (if exist) in request header
                    if(params[2] != null){
+                       Log.e("POST FOR LOG IN, URL: ", params[0].toString());
                        ArrayList<NameValuePair> headerList = (ArrayList<NameValuePair>) params[3];
                        //execute different post with ...
                        if(headerList.get(2).getValue().toString().equals("login") ){
@@ -130,10 +131,10 @@ public class JsonParser {
                            httpPost.setEntity(new UrlEncodedFormEntity(headerList));
                        }
                    }else {
-
+                       Log.e("POST FOR CHECK IN, URL: ", params[0].toString());
                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-                       nameValuePairs.add(new BasicNameValuePair("method", params[1].toString()));
-                       httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8")); /////////
+                       nameValuePairs.add(new BasicNameValuePair("method",params[0].toString()));
+                       httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
                    }
                    HttpResponse httpResponse = httpClient.execute(httpPost);
                    HttpEntity httpEntity = httpResponse.getEntity();
