@@ -68,19 +68,18 @@ public class VoucherFragment extends ListFragment {
             Log.d("VOUCHERS: ", "no vouchers in local database");
         }
 
-        //Each row in the list stores country name, currency and flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
         for(Voucher v : vouchers)
         {
             HashMap<String, String> hm = new HashMap<String,String>();
             hm.put("voucher_name", v.getName());
-            hm.put("voucher_store", res.getString(R.string.label_voucher_store)+ " " + v.getVoucherStoreName());
+            hm.put("voucher_store", v.getVoucherStoreName() +" | "+ v.getVoucherStoreLocation());
             hm.put("voucher_to", res.getString(R.string.label_voucher_to)+ " "+ v.getVoucherValidUntil());
             aList.add(hm);
         }
 
-        // Keys used in Hashmap
+
         String[] from = { "voucher_name", "voucher_store", "voucher_to" };
 
         // Ids of views in listview_layout
