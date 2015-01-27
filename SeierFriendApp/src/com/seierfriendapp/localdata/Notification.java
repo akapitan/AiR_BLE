@@ -1,4 +1,4 @@
-package com.example.localdata;
+package com.seierfriendapp.localdata;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -10,29 +10,28 @@ import java.util.Date;
  * Created by goran on 9.1.2015..
  */
 
-@Table(name="Notification")
+@Table(name = "Notification")
 public class Notification extends Model {
 
-    @Column(name="idNotification")
+    @Column(name = "idNotification")
     private long idNotification;
     @Column(name = "deviceId")
-    private  String deviceId;
-    @Column(name="checkedIn")
+    private String deviceId;
+    @Column(name = "checkedIn")
     private boolean checkedIn;
-    @Column (name="dateNotification")
+    @Column(name = "dateNotification")
     private Date dateNotification;
 
-    public Notification(){
+    public Notification() {
         super();
     }
 
-    public Notification(long idNotification, boolean checkedIn, Date dateNotification){
+    public Notification(long idNotification, boolean checkedIn, Date dateNotification) {
         super();
-        this.idNotification=idNotification;
-        this.checkedIn=checkedIn;
-        this.dateNotification=dateNotification;
+        this.idNotification = idNotification;
+        this.checkedIn = checkedIn;
+        this.dateNotification = dateNotification;
     }
-
 
 
     public long getIdNotification() {

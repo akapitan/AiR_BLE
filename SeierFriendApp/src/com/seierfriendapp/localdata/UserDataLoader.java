@@ -1,8 +1,6 @@
-package com.example.core;
+package com.seierfriendapp.localdata;
 
 import android.util.Log;
-import com.example.localdata.User;
-import com.example.localdata.Voucher;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,22 +8,21 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.example.services.JsonParser.ConvertToDate;
+import static com.seierfriendapp.services.JsonParser.ConvertToDate;
 
 /**
  * Created by vlazar on 2.12.2014..
  */
-public class DbDataSaver {
+public class UserDataLoader {
 
-    public DbDataSaver() {
+    public UserDataLoader() {
     }
 
     /**
      * Save user credentials to local database. If user data exists,
      * update changes
      */
-    public void saveUserData(JSONObject jo, String pass, String authTokenn)
-    {
+    public void saveUserData(JSONObject jo, String pass, String authTokenn) {
         try {
             long idUser = Long.parseLong(jo.getString("id"));
             boolean s1member = Boolean.parseBoolean(jo.getString("s1member"));
@@ -36,7 +33,7 @@ public class DbDataSaver {
             String title = jo.getString("title").toString();
             String email = jo.getString("email").toString();
             String password = pass;
-            String authToken=authTokenn;
+            String authToken = authTokenn;
             int points = Integer.parseInt(jo.getString("points").toString());
             int pointsToday = Integer.parseInt(jo.getString("points_today"));
             Date birthdate = ConvertToDate(jo.getString("birthdate"));
@@ -55,14 +52,13 @@ public class DbDataSaver {
             //user.save();
             user.saveUser(user);
             Log.e("DB-SAVED", user + " - " + user.authToken().toString());
-        } catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
             Log.e("DB-NOT_SAVED", "not saved");
         }
     }
 
-    public void saveVoucherData(JSONObject jo)
-    {
+    public void saveVoucherData(JSONObject jo) {
         try {
             long idVoucher = Long.parseLong(jo.getString("id"));
             String name = jo.getString("name").toString();
@@ -87,7 +83,6 @@ public class DbDataSaver {
             int nonRedeemableReason = Integer.parseInt(jo.getString("non_redeemable_reason"));
 
 
-
             Voucher voucher;
             voucher = new Voucher(idVoucher, type, name, description, redeemable, imageUrl, voucherTitle, voucherTerms,
                     voucherLogoUrl, voucherImageUrl, voucherEan, voucherStoreName, voucherStoreLocation, voucherValidUntil,
@@ -95,7 +90,7 @@ public class DbDataSaver {
 
             voucher.saveVoucher(voucher);
             Log.e("VOUCHER DB-SAVED", voucher + " - " + voucher.getName().toString());
-        } catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
             Log.e("VOUCHER DB-NOT_SAVED", "not saved");
         }

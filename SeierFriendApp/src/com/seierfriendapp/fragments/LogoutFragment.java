@@ -1,16 +1,16 @@
-package com.example.fragments;
+package com.seierfriendapp.fragments;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.activeandroid.query.Select;
-import com.example.core.BaseApplication;
-import com.example.localdata.Login;
-import com.example.seierfriendapp.LoginActivity;
+import com.seierfriendapp.BaseApplication;
+import com.seierfriendapp.localdata.Login;
+import com.seierfriendapp.seierfriendapp.LoginActivity;
 
 /**
  * Created by matha on 25.01.15..
@@ -29,7 +29,7 @@ public class LogoutFragment extends Fragment {
     /**
      * Update user/set logged in to false
      */
-    public void userLogout(){
+    public void userLogout() {
         //Select from db. Check if there is logged in = true (Existing user logged in)
         try {
             Login loggedUser = new Select().from(Login.class).where("loggedIn == ?", true).executeSingle();
@@ -41,14 +41,14 @@ public class LogoutFragment extends Fragment {
             userLogin.setParticipant_id(loggedUser.getParticipant_id());
             userLogin.setLoggedIn(false);
             userLogin.save();
-            Log.e("User Logout","Successful");
+            Log.e("User Logout", "Successful");
             loggedUser = null;
             loggedUser = new Select().from(Login.class).where("loggedIn == ?", true).executeSingle();
             Log.e("LoggedUser11111111111111111", loggedUser.getEmail() + " " + loggedUser.getPassword());
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             //no existing user show username and password
-            Log.e("CheckIfUserExists","User does not exists!");
+            Log.e("CheckIfUserExists", "User does not exists!");
             ex.printStackTrace();
 
         }

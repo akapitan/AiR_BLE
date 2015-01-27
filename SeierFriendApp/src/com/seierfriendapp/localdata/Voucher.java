@@ -1,4 +1,4 @@
-package com.example.localdata;
+package com.seierfriendapp.localdata;
 
 import android.util.Log;
 import com.activeandroid.Model;
@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by vlazar on 2.12.2014..
  */
-@Table(name="Voucher")
+@Table(name = "Voucher")
 public class Voucher extends Model {
 
     @Column(name = "idVoucher")
@@ -68,8 +68,7 @@ public class Voucher extends Model {
                    String voucherValidUntil, String voucherDiscountStampUrl,
                    int validFor, Date validFrom, Date validUntil,
                    boolean multipleRedeemable, int vestingPeriod,
-                   int nonRedeemableReason)
-    {
+                   int nonRedeemableReason) {
         super();
         this.idVoucher = idVoucher;
         this.type = type;
@@ -189,7 +188,7 @@ public class Voucher extends Model {
                 voucher.save();
                 Log.d("NEW VOUCHER ", voucher.name + " - " + voucher.type);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

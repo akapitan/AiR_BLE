@@ -1,4 +1,4 @@
-package com.example.localdata;
+package com.seierfriendapp.localdata;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
@@ -8,19 +8,19 @@ import com.activeandroid.annotation.Table;
  * Created by goran on 9.1.2015..
  */
 
-@Table(name="Login")
+@Table(name = "Login")
 public class Login extends Model {
     @Column(name = "email")
     private String email;
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
-    @Column(name="authorization_token")
+    @Column(name = "authorization_token")
     private String authorization_token;
-    @Column(name="participant_id")
+    @Column(name = "participant_id")
     private String participant_id;
-    @Column(name="loggedIn")
+    @Column(name = "loggedIn")
     private boolean loggedIn;
-    @Column(name="tag_id")
+    @Column(name = "tag_id")
     private String tag_id;
 
     public String getTag_id() {
@@ -31,7 +31,7 @@ public class Login extends Model {
         this.tag_id = tag_id;
     }
 
-    public Login(){
+    public Login() {
         super();
     }
 

@@ -1,4 +1,4 @@
-package com.example.seierfriendapp;
+package com.seierfriendapp.seierfriendapp;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -23,11 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
-import com.example.core.DbDataSaver;
-import com.example.fragments.LoginFragment;
-import com.example.localdata.Login;
-import com.example.services.DataCollectedListener;
-import com.example.services.JsonParser;
+import hr.foi.seierfriendapp.R;
+import com.seierfriendapp.fragments.LoginFragment;
+import com.seierfriendapp.localdata.Login;
+import com.seierfriendapp.localdata.UserDataLoader;
+import com.seierfriendapp.services.DataCollectedListener;
+import com.seierfriendapp.services.JsonParser;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -222,7 +223,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                     //startMainActivity();
                 } else {
                     startedFromNotification = false;
-                    DbDataSaver dbSaver = new DbDataSaver();
+                    UserDataLoader dbSaver = new UserDataLoader();
                     dbSaver.saveUserData(jo, passLogin, authToken);
                     //everything ok. Start main act.
                     progressDialog.dismiss();

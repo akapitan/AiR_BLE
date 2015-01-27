@@ -1,4 +1,4 @@
-package com.example.services;
+package com.seierfriendapp.services;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.content.Intent;
 public abstract class DeviceScanner implements OuterDevicesScan {
     /**
      * Method that notifies ScanningService that device has been found (scanned)
+     *
      * @param applicationContext current aplication context
      */
     @Override

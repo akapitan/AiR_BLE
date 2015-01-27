@@ -3,7 +3,7 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res/com.example.seierfriendapp">
+        xmlns:app="http://schemas.android.com/apk/res/hr.foi.seierfriendapp">
 
     <!-- Framelayout to display Fragments -->
     <FrameLayout
@@ -13,7 +13,7 @@
 
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
             <TextView
                     android:id="@+id/txtPointsHeading"
@@ -36,7 +36,7 @@
                     android:layout_marginTop="72dp"
                     app:progress="0.6"
                     app:progress_background_color="#000"
-                    app:progress_color="#f39c12" />
+                    app:progress_color="#f39c12"/>
 
             <TextView
                     android:id="@+id/txtCurrentPoints"

@@ -1,28 +1,27 @@
-package com.example.localdata;
+package com.seierfriendapp.localdata;
 
-import android.util.Log;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
-import com.activeandroid.util.SQLiteUtils;
 
 import java.util.List;
 
 /**
  * Created by Viktor on 08/01/2015.
  */
-@Table(name="Beacon")
+@Table(name = "Beacon")
 public class Beacon extends Model {
     @Column(name = "idBeacon")
     private long idBeacon;
     @Column(name = "mac")
     private String mac;
 
-    public Beacon() { super(); }
+    public Beacon() {
+        super();
+    }
 
-    public Beacon(long idBeacon, String mac)
-    {
+    public Beacon(long idBeacon, String mac) {
         super();
         this.idBeacon = idBeacon;
         this.mac = mac;
@@ -45,7 +44,7 @@ public class Beacon extends Model {
         this.idBeacon = idBeacon;
     }
 
-    public List<Beacon> getMacAdresses(){
-        return  new Select().from(Beacon.class).execute();
+    public List<Beacon> getMacAdresses() {
+        return new Select().from(Beacon.class).execute();
     }
 }

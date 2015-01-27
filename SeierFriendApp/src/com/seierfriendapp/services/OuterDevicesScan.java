@@ -1,4 +1,4 @@
-package com.example.services;
+package com.seierfriendapp.services;
 
 /**
  * Created by goran on 3.12.2014..
@@ -22,6 +22,7 @@ public interface OuterDevicesScan {
 
     /**
      * Method that notifies Application on device match.
+     *
      * @param applicationContext current aplication context
      */
     public void notifyOnScan(Context applicationContext);
