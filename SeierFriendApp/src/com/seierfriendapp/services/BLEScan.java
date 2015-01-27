@@ -1,10 +1,9 @@
-package com.example.services;
+package com.seierfriendapp.services;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.util.SparseArray;

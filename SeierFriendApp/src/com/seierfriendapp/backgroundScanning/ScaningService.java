@@ -1,4 +1,4 @@
-package com.example.backgroundScanning;
+package com.seierfriendapp.backgroundScanning;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -7,11 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
-import com.example.core.BaseApplication;
-import com.example.localdata.Beacon;
-import com.example.services.BLEScan;
-import com.example.services.OuterDevicesScan;
+import com.seierfriendapp.BaseApplication;
+import com.seierfriendapp.localdata.Beacon;
+import com.seierfriendapp.services.BLEScan;
+import com.seierfriendapp.services.OuterDevicesScan;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.List;
  */
 public class ScaningService extends Service {
     private Thread mThread;
-    private static ScaningService instance=null;
+    private static ScaningService instance = null;
     public List<String> deviceList;
 
     @Override
@@ -59,9 +58,9 @@ public class ScaningService extends Service {
     /**
      * Singleton. No duplicate services.
      */
-    public static ScaningService getInstance(){
-        if(instance==null){
-            instance=new ScaningService();
+    public static ScaningService getInstance() {
+        if (instance == null) {
+            instance = new ScaningService();
         }
         return instance;
     }
@@ -69,21 +68,20 @@ public class ScaningService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e("Service","Servis startCommand");
-        Toast.makeText(this, "Servis pokrenut", Toast.LENGTH_SHORT).show();
-
+        Log.e("Service", "Servis startCommand");
         return START_STICKY;
     }
 
     /**
      * Get Mac addresses from local database.
      * MAC addresses are from devices that need to match.
+     *
      * @return list of mac addresses of devices from local database
      */
-    private List<String> getMacAdresses(){
-        Beacon mac=new Beacon();
+    private List<String> getMacAdresses() {
+        Beacon mac = new Beacon();
         List<String> macs = new LinkedList<String>();
-        for(Beacon i : mac.getMacAdresses()){
+        for (Beacon i : mac.getMacAdresses()) {
             macs.add(i.getMac());
             Log.e("MAC ADDRESS", i.getMac().toString());
         }
@@ -106,6 +104,7 @@ public class ScaningService extends Service {
 
     /**
      * Defines what action is performed on received broadcast signal.
+     *
      * @param c application context
      */
     public static void startAct(Context c) {

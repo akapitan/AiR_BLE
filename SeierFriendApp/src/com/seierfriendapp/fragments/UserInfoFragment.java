@@ -1,4 +1,4 @@
-package com.example.fragments;
+package com.seierfriendapp.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,27 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.activeandroid.query.Select;
-import com.example.localdata.User;
-import com.example.seierfriendapp.LoginActivity;
-import com.example.seierfriendapp.R;
+import hr.foi.seierfriendapp.R;
+import com.seierfriendapp.localdata.User;
+import com.seierfriendapp.seierfriendapp.LoginActivity;
 
 public class UserInfoFragment extends Fragment {
 
     /*
     *  TO DO read authToken from Shared Preferences
     */
-	
-	public UserInfoFragment(){}
-	
-	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        View rootView = inflater.inflate(R.layout.fragment_user_info, container, false);
-         
-        return rootView;
+
+    public UserInfoFragment() {
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_user_info, container, false);
+
+        return rootView;
+    }
 
 
     @Override

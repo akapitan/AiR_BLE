@@ -1,4 +1,4 @@
-package com.example.localdata;
+package com.seierfriendapp.localdata;
 
 import android.util.Log;
 import com.activeandroid.Model;
@@ -10,12 +10,11 @@ import java.util.Date;
 
 /**
  * Created by vlazar on 1.12.2014..
- *
+ * <p/>
  * Entity class representing a user.
- *
  */
 
-@Table(name="User")
+@Table(name = "User")
 public class User extends Model {
     @Column(name = "idUser")
     private long idUser;
@@ -50,17 +49,15 @@ public class User extends Model {
     @Column(name = "authToken")
     private String authToken;
 
-    public User()
-    {
+    public User() {
         super();
     }
 
     public User(long idUser, boolean s1member, boolean employee, String salutation, String firstName, String lastName,
                 String title, Date birthdate, String email, String password, int points, int level, int checkins,
-                Date lastCheckin, int pointsToday, String authToken)
-    {
+                Date lastCheckin, int pointsToday, String authToken) {
         super();
-        this.idUser=idUser;
+        this.idUser = idUser;
         this.s1member = s1member;
         this.employee = employee;
         this.salutation = salutation;
@@ -140,17 +137,9 @@ public class User extends Model {
         return pointsToday;
     }
 
-    public String authToken() { return authToken; }
-
-    /**
-     * Get specified user by email
-     */
-    /*public static User getUser(User u)
-    {
-        return new Select().from(User.class)
-                           .where("email = ?", u.getEmail())
-                           .executeSingle();
-    }*/
+    public String authToken() {
+        return authToken;
+    }
 
     public void saveUser(User user) {
         try {
@@ -165,27 +154,10 @@ public class User extends Model {
                 Log.d("UPDATE TRUE", select.email + " - " + select.authToken);
             } else {
                 user.save();
-                Log.d("UPDATE FALSE", "CREATED NEW USER email: " + user.email  + " - " + select.authToken);
+                Log.d("UPDATE FALSE", "CREATED NEW USER email: " + user.email + " - " + select.authToken);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    /*public void showUser()
-    {
-        Select select = new Select();
-
-        List<User> users = select.all().from(User.class).execute();
-
-        StringBuilder sb = new StringBuilder();
-        for(User user : users){
-            sb.append("\n").append("ID: ").append(user.getIdUser())
-                    .append("Email: ").append(user.getEmail())
-                    .append("First name: ").append(user.getFirstName())
-                    .append("Last name: ").append(user.getLastName())
-                    .append("Points: ").append(user.getPoints());
-        }
-        Log.d("Local storage", sb.toString());
-    }*/
 }
