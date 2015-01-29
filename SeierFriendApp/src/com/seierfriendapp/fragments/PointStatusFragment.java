@@ -2,19 +2,22 @@ package com.seierfriendapp.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.activeandroid.query.Select;
+import com.pascalwelsch.holocircularprogressbar.HoloCircularProgressBar;
 import hr.foi.seierfriendapp.R;
 import com.seierfriendapp.localdata.User;
 import com.seierfriendapp.seierfriendapp.LoginActivity;
 
 public class PointStatusFragment extends Fragment {
 
-    //SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences();
-    // String auth_token = settings.getString("authToken", "");
+    final int level1 = 800;
+    final int level2 = 1200;
+    final int level3 = 1200;
 
     public PointStatusFragment() {
     }
@@ -42,12 +45,32 @@ public class PointStatusFragment extends Fragment {
             name.setText(u.getFirstName() + " " + u.getLastName());
 
             TextView friendStatus = ((TextView) getView().findViewById(R.id.txtFriendStatus));
-            if (u.getPoints() > 0 && u.getPoints() < 800)
+            if (u.getPoints() > 0 && u.getPoints() < level1) {
                 friendStatus.setText(getResources().getString(R.string.friendStatus1));
-            if (u.getPoints() > 800 && u.getPoints() < 1200)
+                float circle = ((float) u.getPoints())/level1;
+                HoloCircularProgressBar progressBar = (HoloCircularProgressBar)getView().findViewById(R.id.holoCircularProgressBar);
+                Log.e("User points: ",String.valueOf(circle));
+                progressBar.setProgress(circle);
+                progressBar.setMarkerEnabled(false);
+
+            }
+
+            if (u.getPoints() > 800 && u.getPoints() < level2) {
                 friendStatus.setText(getResources().getString(R.string.friendStatus2));
-            if (u.getPoints() > 1200)
+                float circle = ((float) u.getPoints())/level2;
+                HoloCircularProgressBar progressBar = (HoloCircularProgressBar)getView().findViewById(R.id.holoCircularProgressBar);
+                Log.e("User points: ",String.valueOf(circle));
+                progressBar.setProgress(circle);
+                progressBar.setMarkerEnabled(false);
+            }
+            if (u.getPoints() > level2) {
                 friendStatus.setText(getResources().getString(R.string.friendStatus3));
+                float circle = ((float) u.getPoints())/level3;
+                HoloCircularProgressBar progressBar = (HoloCircularProgressBar)getView().findViewById(R.id.holoCircularProgressBar);
+                Log.e("User points: ",String.valueOf(circle));
+                progressBar.setProgress(circle);
+                progressBar.setMarkerEnabled(false);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }

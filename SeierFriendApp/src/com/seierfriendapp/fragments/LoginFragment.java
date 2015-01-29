@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.seierfriendapp.R;
+import hr.foi.seierfriendapp.R;
 
 public class LoginFragment extends Fragment {
     @Override

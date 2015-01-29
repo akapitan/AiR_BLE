@@ -35,10 +35,10 @@ public class LogoutFragment extends Fragment {
             Login loggedUser = new Select().from(Login.class).where("loggedIn == ?", true).executeSingle();
             Log.e("LoggedUser", loggedUser.getEmail() + " " + loggedUser.getPassword());
             Login userLogin = loggedUser;
-            userLogin.setEmail(loggedUser.getEmail());
+            /*userLogin.setEmail(loggedUser.getEmail());
             userLogin.setPassword(loggedUser.getPassword());
             userLogin.setAuthorization_token(loggedUser.getAuthorization_token());
-            userLogin.setParticipant_id(loggedUser.getParticipant_id());
+            userLogin.setParticipant_id(loggedUser.getParticipant_id());*/
             userLogin.setLoggedIn(false);
             userLogin.save();
             Log.e("User Logout", "Successful");

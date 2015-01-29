@@ -10,6 +10,7 @@ import android.util.Log;
 import com.seierfriendapp.BaseApplication;
 import com.seierfriendapp.localdata.Beacon;
 import com.seierfriendapp.services.BLEScan;
+import com.seierfriendapp.services.DeviceScanner;
 import com.seierfriendapp.services.OuterDevicesScan;
 
 import java.util.LinkedList;
@@ -45,7 +46,7 @@ public class ScaningService extends Service {
         deviceList = getMacAdresses();
 
         ///start scanning over the interface
-        final OuterDevicesScan outerDevicesScan1 = new BLEScan();
+        final DeviceScanner outerDevicesScan1 = new BLEScan();
         mThread = new Thread(new Runnable() {
             @Override
             public void run() {
