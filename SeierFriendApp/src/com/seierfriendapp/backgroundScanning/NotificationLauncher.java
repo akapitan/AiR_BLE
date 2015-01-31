@@ -13,9 +13,6 @@ import com.seierfriendapp.seierfriendapp.LoginActivity;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by matha on 08.01.15..
- */
 public class NotificationLauncher {
     public Context context;
 

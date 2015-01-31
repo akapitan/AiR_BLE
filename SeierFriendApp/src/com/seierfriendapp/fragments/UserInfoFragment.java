@@ -13,9 +13,6 @@ import com.seierfriendapp.seierfriendapp.LoginActivity;
 
 public class UserInfoFragment extends Fragment {
 
-    /*
-    *  TO DO read authToken from Shared Preferences
-    */
 
     public UserInfoFragment() {
     }
@@ -33,8 +30,6 @@ public class UserInfoFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //select user from db
-        //User u = new Select().from(User.class).where("authToken == ?", authToken).executeSingle();
 
         User u = new Select().from(User.class).where("authToken == ?", LoginActivity.authToken).executeSingle();
         //set user data

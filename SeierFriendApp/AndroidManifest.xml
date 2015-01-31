@@ -36,9 +36,9 @@
                   android:icon="@android:color/transparent">
         </activity>
         <!--Register service -->
-        <service android:name="com.seierfriendapp.backgroundScanning.ScaningService" android:enabled="true"/>
+        <service android:name="com.seierfriendapp.backgroundScanning.ScanningService" android:enabled="true"/>
         <!--Register broadcast event -->
-        <receiver android:name="com.seierfriendapp.backgroundScanning.ScaningService$Reciever" android:enabled="true">
+        <receiver android:name="com.seierfriendapp.backgroundScanning.ScanningService$Receiver" android:enabled="true">
             <intent-filter>
                 <action android:name="com.example.action.DEVICE_SCANNED"/>
             </intent-filter>

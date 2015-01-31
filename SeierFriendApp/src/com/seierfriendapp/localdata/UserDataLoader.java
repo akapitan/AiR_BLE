@@ -10,9 +10,7 @@ import java.util.Date;
 
 import static com.seierfriendapp.services.JsonParser.ConvertToDate;
 
-/**
- * Created by vlazar on 2.12.2014..
- */
+
 public class UserDataLoader {
 
     public UserDataLoader() {
@@ -43,8 +41,6 @@ public class UserDataLoader {
             //Save timestamp of last checkin
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date lastCheckin = new Date();
-
-            /*password;*/
 
             User user;
             user = new User(idUser, s1member, employee, salutation, firstName, lastName, title, birthdate, email,

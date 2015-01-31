@@ -25,9 +25,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by matha on 29.11.14..
- */
 public class JsonParser {
 
     private DataCollectedListener dataCollectedListener;
@@ -101,7 +98,7 @@ public class JsonParser {
             ArrayList<NameValuePair> parameters = null;
 
             try {
-                //check the method, second parameter of @paramsž
+                //check the method, second parameter of @params
                 if (params[1].toString() == "GET" || params[1].toString() == "get") {
 
                     HttpClient httpClient = new DefaultHttpClient();
@@ -167,7 +164,6 @@ public class JsonParser {
                 errorMessage = e.getLocalizedMessage();
             }
 
-            //read what have you got
             try {
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
@@ -218,7 +214,6 @@ public class JsonParser {
                 dataCollectedListener.DataCollected(true, errors, errorMessage);
             } else {
                 dataCollectedListener.DataCollected(false, errors, errorMessage);
-                //  Toast.makeText(ctx, "Something went wrong :(", Toast.LENGTH_LONG).show();
             }
         }
     }

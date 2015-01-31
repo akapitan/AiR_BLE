@@ -1,8 +1,6 @@
 package com.seierfriendapp.services;
 
 /**
- * Created by matha on 29.11.14..
- * <p/>
  * Listener that indicates if data is collected or not
  */
 public interface DataCollectedListener {

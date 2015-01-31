@@ -8,9 +8,6 @@ import com.activeandroid.query.Select;
 
 import java.util.Date;
 
-/**
- * Created by vlazar on 2.12.2014..
- */
 @Table(name = "Voucher")
 public class Voucher extends Model {
 

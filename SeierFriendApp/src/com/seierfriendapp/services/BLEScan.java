@@ -10,9 +10,6 @@ import android.util.SparseArray;
 
 import java.util.List;
 
-/**
- * Created by goran on 1.12.2014..
- */
 @SuppressWarnings("deprecation")
 public class BLEScan extends DeviceScanner implements BluetoothAdapter.LeScanCallback {
 
@@ -22,7 +19,7 @@ public class BLEScan extends DeviceScanner implements BluetoothAdapter.LeScanCal
     Handler mHandler;
     Context applicationContext;
     //Mac Addresses to filter scanned devices
-    private List<String> macAddreses;
+    private List<String> macAddresses;
 
     public BLEScan() {
     }
@@ -40,7 +37,6 @@ public class BLEScan extends DeviceScanner implements BluetoothAdapter.LeScanCal
 
     /**
      * Method that initiates device scanning, and stops it after 9 seconds
-     * HARDCODED TIME VALUE -> CHANGE LATER!!!.
      */
     private void startScan(Context ctx) {
         applicationContext = ctx;
@@ -71,10 +67,10 @@ public class BLEScan extends DeviceScanner implements BluetoothAdapter.LeScanCal
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
         j++;
         //check if any of MAC addresses match, Break after first match
-        for (String i : macAddreses) {
+        for (String i : macAddresses) {
             if (i.equals(device.getAddress().toString())) {
                 Log.e("BLEScan", "Device MATCH! " + device.getName() + " @ " + rssi + " MAC: " + device.getAddress().toString());
-                //put devices in sparsearray
+                //put devices in sparse array
                 mDevices.put(device.hashCode(), device);
                 //send broadcast
                 //just for slowing down broadcast events
@@ -98,7 +94,7 @@ public class BLEScan extends DeviceScanner implements BluetoothAdapter.LeScanCal
      */
     @Override
     public void scanForDevices(Context ctx, List<String> macAddresses) {
-        this.macAddreses = macAddresses;
+        this.macAddresses = macAddresses;
         startScan(ctx);
     }
 

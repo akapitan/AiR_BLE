@@ -2,6 +2,7 @@ package com.seierfriendapp.seierfriendapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -61,6 +62,7 @@ public class MainActivity extends FragmentActivity implements DataCollectedListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mTitle = mDrawerTitle = getTitle();
 
@@ -79,9 +81,9 @@ public class MainActivity extends FragmentActivity implements DataCollectedListe
 
         // adding nav drawer items to array
         // User info
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Point status
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        // Point status
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // Voucher
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         //Logout
@@ -125,8 +127,6 @@ public class MainActivity extends FragmentActivity implements DataCollectedListe
             displayView(0);
         }
 
-
-        //IMPORTANT!!! -> set current context
         baseApp = (BaseApplication) getApplication();
         baseApp.setCurrentContext(this);
 
@@ -215,7 +215,7 @@ public class MainActivity extends FragmentActivity implements DataCollectedListe
     }
 
     /**
-     * Diplaying fragment view for selected nav drawer list item
+     * Displaying fragment view for selected nav drawer list item
      */
     private void displayView(int position) {
         // update the main content by replacing fragments

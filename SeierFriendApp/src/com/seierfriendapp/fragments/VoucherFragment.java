@@ -24,37 +24,7 @@ public class VoucherFragment extends ListFragment {
         List<Voucher> vouchers = null;
         Resources res = getResources();
 
-
-        //load data from local db
-
-        /*
-        * Load vouchers based on user level
-        * - strange behaviour -
-        **/
-
-        /*
-        String queryLimit;
-        User user = new Select().from(User.class).where("authToken = ?", LoginActivity.authToken).executeSingle();
-        Log.e("USER LEVEL ", String.valueOf(user.getLevel()));
-
-        switch(user.getLevel()){
-            case 1:
-                queryLimit = "validFor = 1";
-                break;
-            case 2:
-                queryLimit = "validFor = 1 OR validFor = 2";
-                break;
-            case 3:
-                queryLimit = "validFor = 1 OR validFor = 2 OR validFor = 3";
-                break;
-            default:
-                queryLimit = "validFor = 0";
-        }
-        Log.e("QUERA LIMIT ", queryLimit);
-        */
-
         try {
-            //vouchers = new Select().all().from(Voucher.class).where(queryLimit).execute();
             vouchers = new Select().all().from(Voucher.class).execute();
             queryOk = true;
         } catch (NullPointerException e) {
@@ -64,7 +34,7 @@ public class VoucherFragment extends ListFragment {
             Log.d("VOCHERS LIST: ", vouchers.toString());
             vouchers = (ArrayList<Voucher>) vouchers;
         } else if (vouchers.size() == 0 && queryOk == true) {
-            Log.d("VOUCHERS: ", "no vouchers in local database");
+            Log.d("VOUCHERS: ", "No vouchers in local database");
         }
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();

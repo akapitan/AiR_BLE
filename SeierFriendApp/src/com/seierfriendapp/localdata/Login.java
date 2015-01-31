@@ -4,9 +4,6 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-/**
- * Created by goran on 9.1.2015..
- */
 
 @Table(name = "Login")
 public class Login extends Model {

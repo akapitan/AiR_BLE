@@ -6,13 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import com.activeandroid.ActiveAndroid;
-import com.seierfriendapp.backgroundScanning.ScaningService;
+import com.seierfriendapp.backgroundScanning.ScanningService;
 import com.seierfriendapp.localdata.Beacon;
 
 
-/**
- * Created by goran on 2.12.2014..
- */
 public class BaseApplication extends Application {
     private Context currentContext;
     private static BaseApplication instance;
@@ -26,8 +23,8 @@ public class BaseApplication extends Application {
         //enable bluetooth if it's disabled
         if (BluetoothAdapter.getDefaultAdapter().isEnabled() == false)
             BluetoothAdapter.getDefaultAdapter().enable();
-        //creating scaning service
-        startService(new Intent(getBaseContext(), ScaningService.class));
+        //creating scanning service
+        startService(new Intent(getBaseContext(), ScanningService.class));
         Log.e("BaseApplication", "Service started in baseApplication");
 
         ActiveAndroid.initialize(this);

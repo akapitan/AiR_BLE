@@ -30,7 +30,6 @@
     <string name="enter_tag_id">Enter tag ID</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-    <string name="tag_label">It seems this is your first sign in. Please enter your Tag ID.</string>
     <string name="loginProgressDialogTitle">Loading</string>
     <string name="loginProgressDialogMessage">Please wait...</string>
     <string name="friendStatus1">Basic friend</string>
@@ -43,10 +42,13 @@
     <string name="label_voucher_store">Store:</string>
     <string name="label_voucher_from">Valid from:</string>
     <string name="label_voucher_to">Valid until:</string>
+    <string name="toast_login">Please login.</string>
+    <string name="toast_tagid">Please enter valid TagId </string>
+    <string name="tag_label">Enter Tag ID</string>
 
     <string-array name="nav_drawer_items">
-        <item>User info</item>
         <item>Point status</item>
+        <item>User info</item>
         <item>Vouchers</item>
         <item>Logout</item>
     </string-array>
@@ -54,8 +56,8 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_people</item>
         <item>@drawable/ic_photos</item>
+        <item>@drawable/ic_people</item>
         <item>@drawable/ic_pages</item>
         <item>@drawable/ic_home</item>
     </array>

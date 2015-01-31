@@ -7,9 +7,6 @@ import com.activeandroid.query.Select;
 
 import java.util.List;
 
-/**
- * Created by Viktor on 08/01/2015.
- */
 @Table(name = "Beacon")
 public class Beacon extends Model {
     @Column(name = "idBeacon")
@@ -44,7 +41,7 @@ public class Beacon extends Model {
         this.idBeacon = idBeacon;
     }
 
-    public List<Beacon> getMacAdresses() {
+    public List<Beacon> getMacAddresses() {
         return new Select().from(Beacon.class).execute();
     }
 }

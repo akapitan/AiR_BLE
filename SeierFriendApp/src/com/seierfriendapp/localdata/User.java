@@ -9,8 +9,6 @@ import com.activeandroid.query.Select;
 import java.util.Date;
 
 /**
- * Created by vlazar on 1.12.2014..
- * <p/>
  * Entity class representing a user.
  */
 

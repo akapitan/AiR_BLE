@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -67,6 +68,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         bar.hide();
         setContentView(R.layout.login_layout);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //json parser init
         jsonParser = new JsonParser(getApplicationContext());
@@ -83,7 +85,7 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
 
-        //button disabled before creds are entered
+        //button disabled before credentials are entered
         btnSignIn.setEnabled(false);
         btnSignIn.setBackgroundColor(0xFFAAAAAA);
 
@@ -124,10 +126,10 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                         //userCheckIn(TagID.getTag_id().toString()); //From database
                         userCheckIn("b5f21f01-6b09-11e4-9def-005056a11f87");
                     } catch (Exception e) {
-                        Toast.makeText(this, "Please enter valid TagId " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, R.string.toast_tagid + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(this, "Please login.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, R.string.toast_login, Toast.LENGTH_LONG).show();
                 }
             }
         } catch (Exception e) {
@@ -220,8 +222,9 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
                     progressDialog.dismiss();
                     login = false;
                     getUserStatusDataFromServer(authToken);
-                    //startMainActivity();
-                } else {
+
+                }
+                else {
                     startedFromNotification = false;
                     UserDataLoader dbSaver = new UserDataLoader();
                     dbSaver.saveUserData(jo, passLogin, authToken);
@@ -257,13 +260,13 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
         jsonParser.getData(jsonParameters);
     }
 
-    public void getUserStatusDataFromServer(String athorization_token) {
+    public void getUserStatusDataFromServer(String authorization_token) {
         login = false;
         Resources res = getResources();
         //get url from resources
         url = String.format(res.getString(R.string.wsURI));
         header = new ArrayList<NameValuePair>();
-        header.add(new BasicNameValuePair("Authorization", athorization_token));
+        header.add(new BasicNameValuePair("Authorization", authorization_token));
         jsonParameters = new Object[]{
                 Uri.parse(url),
                 "get",
@@ -290,12 +293,12 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
     /**
      * Save successful login. Used later for auto login.
      *
-     * @param athorization_token Tag id from dialog input
+     * @param authorization_token Tag id from dialog input
      * @param email              Email from input text
      * @param password           Password from input text
      * @param loggedIn           is user logged in
      */
-    private void saveLogin(String athorization_token, String participant_id, String email, String password, boolean loggedIn, String tagId) {
+    private void saveLogin(String authorization_token, String participant_id, String email, String password, boolean loggedIn, String tagId) {
         Login login;
         try {
             Login loggedUser = new Select().from(Login.class).where("email == ?", email).executeSingle();
@@ -310,13 +313,13 @@ public class LoginActivity extends FragmentActivity implements DataCollectedList
             login = new Login();
         }
 
-        login.setAuthorization_token(athorization_token);
+        login.setAuthorization_token(authorization_token);
         login.setParticipant_id(participant_id);
         login.setEmail(email);
         login.setPassword(password);
         login.setLoggedIn(loggedIn);
         login.setTag_id(tagId);
-        Log.e("SaveLogin", "User saved with loggedIn = " + athorization_token + " " + participant_id + " " + email + " " + password + " " + loggedIn);
+        Log.e("SaveLogin", "User saved with loggedIn = " + authorization_token + " " + participant_id + " " + email + " " + password + " " + loggedIn);
         login.save();
     }
 

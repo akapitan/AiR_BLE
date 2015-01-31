@@ -6,9 +6,6 @@ import com.activeandroid.annotation.Table;
 
 import java.util.Date;
 
-/**
- * Created by goran on 9.1.2015..
- */
 
 @Table(name = "Notification")
 public class Notification extends Model {
